@@ -1,0 +1,676 @@
+<!-- 모바일 좌우 패딩 16 -->
+<script>
+if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
+  var s=document.createElement('style');
+  s.textContent='body{margin:0}@media(max-width:700px){.contents_div{padding:0 16px}}@media(max-width:576px){.contents_div br{display:inline!important}}';
+  document.head.appendChild(s);
+}
+</script>
+<script>
+(function(){
+  try{
+    if(!document.querySelector('meta[name="viewport"]')){
+      var m=document.createElement('meta');
+      m.setAttribute('name','viewport');
+      m.setAttribute('content','width=device-width, initial-scale=1');
+      (document.head||document.getElementsByTagName('head')[0]||document.documentElement).appendChild(m);
+    }
+  }catch(e){}
+})();
+</script>
+<div class="contents_div">
+<style>
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');font-weight:100;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');font-weight:200;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');font-weight:800;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');font-weight:900;font-display:swap}
+@font-face{font-family:'Paperozi';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');font-weight:100;font-display:swap}
+@font-face{font-family:'Paperozi';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-2ExtraLight.woff2') format('woff2');font-weight:200;font-display:swap}
+@font-face{font-family:'Paperozi';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Paperozi';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Paperozi';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Paperozi';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Paperozi';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Paperozi';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');font-weight:800;font-display:swap}
+@font-face{font-family:'Paperozi';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');font-weight:900;font-display:swap}
+
+/* ===== 변수 ===== */
+.contents_div .ucp-wrap{
+  container-type:inline-size;
+  /* Title */
+  --fs-h2:clamp(20px, min(23px + (100cqi - 388px) * 0.02185, 22px + (100cqi - 343px) * 0.02223, 20px + (100cqi - 318px) * 0.08), 32px); --fs-foot:31px; --fs-h3:21px;
+  /* Body */
+  --fs-body:17px; --fs-lead:16px; --fs-info:16px; --fs-cta:16px; --fs-arrow:17px;
+  --fs-nav:18px; --fs-kicker:15px; --fs-num:14px; --fs-tagcap:13.5px;
+  --fs-label:13px; --fw-label:700; --fs-caption:11px; --fs-hash:12.5px;
+  /* 간격 */
+  --gut:clamp(22px, 6.25%, 50px);
+  --band:clamp(40px, calc(7.9% + 6.8px), 70px);
+  --card-py:30px; --card-px:28px;
+  --kick:32px; --lb-h:24px; --lb-px:11px;
+  --img-ratio:62.5%; --map-vis:75.57%;   /* 지도 보이는 폭 = 칸 비율 ÷ 지도 원본 비율 */
+  --nav-h:70px;
+  --gap-head:32px;   /* 타이틀 묶음 ↔ 본문 */
+  --gap-blk:28px;    /* 본문 블록 사이 */
+  /* 색 */
+  --c-ink:#1b2c3b; --c-ink2:#41566a;
+  --c-sky:#478bca; --c-sky-dk:#3471ad; --c-sky-dp:#2f6aa3; --c-lemon:#f4ff58; --c-orange:#f1ad1e;
+  --c-cream:#fdfde9; --c-aqua:#aad6f7; --c-ice:#eaf4fd; --c-yellow:#eef59c;
+  --c-line:rgba(27,44,59,.14);
+
+  max-width:800px; margin:0 auto;
+  font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-size:var(--fs-body); line-height:1.6; letter-spacing:-0.02em;
+  color:var(--c-ink); word-break:keep-all; overflow-wrap:break-word;
+  -webkit-text-size-adjust:100%;
+}
+
+/* ===== Reset ===== */
+.contents_div .ucp-wrap, .contents_div .ucp-wrap *,
+.contents_div .ucp-wrap *::before, .contents_div .ucp-wrap *::after{ box-sizing:border-box; }
+.contents_div .ucp-wrap :where(h1,h2,h3,p,ul,ol,li,dl,dt,dd,figure,table,blockquote,address){ margin:0; padding:0; }
+.contents_div .ucp-wrap :where(ul,ol){ list-style:none; }
+.contents_div .ucp-wrap :where(img){ max-width:100%; display:block; border:0; }
+.contents_div .ucp-wrap :where(address,em){ font-style:normal; }
+.contents_div .ucp-wrap :where(h1,h2,h3),
+.contents_div .ucp-foot-title{ font-family:'Paperozi','Pretendard',sans-serif; word-break:keep-all; }
+
+/* ===== 조건부 줄바꿈 ===== */
+.contents_div .ucp-br::before{ content:'\A'; white-space:pre; }
+.contents_div .ucp-br--mo,
+.contents_div .ucp-br--mo-wide,
+.contents_div .ucp-br--m420{ display:none; }
+
+/* ===== 공통 섹션 ===== */
+.contents_div .ucp-sec{ width:100%; padding:var(--band) var(--gut); }
+.contents_div .ucp-sec:focus{ outline:none; }
+.contents_div .ucp-head{ text-align:center; padding-bottom:var(--gap-head); }
+.contents_div .ucp-h2{
+  font-size:calc(var(--fs-h2) + 4px);   /* 웹만 +4 */ font-weight:800; line-height:1.35; letter-spacing:-0.01em; color:var(--c-ink);
+}
+.contents_div .ucp-h2-emo{ margin-left:.15em; font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif; font-weight:400; }   /* h2 옆 이모지 */
+.contents_div .ucp-h3{
+  font-size:var(--fs-h3); font-weight:700; line-height:1.45; color:var(--c-ink);
+}
+.contents_div .ucp-txt{ font-size:var(--fs-body); line-height:1.6; }
+
+/* ===== 히어로 ===== */
+.contents_div .ucp-hero{ position:relative; width:100%; background:#488aca; overflow:hidden; }
+.contents_div .ucp-hero-top{ position:relative; width:100%; padding-top:59.1875%; }              /* 800×473.5 (원본 1600×947) */
+.contents_div .ucp-hero-top::after{                                            /* 블루 영역 노이즈 */
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/180px 180px repeat;
+  mix-blend-mode:overlay; opacity:.42;
+}
+.contents_div .ucp-hero-photo{ position:relative; width:100%; background:#eee; }
+.contents_div .ucp-hero-photo::before{ content:''; display:block; padding-top:72.125%; }  /* 800×577 (원본 1600×1154) */
+.contents_div .ucp-hero-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+.contents_div .ucp-hero-fade{                                                  /* 사진 위 블루 그라데이션 57px(800 기준) */
+  position:absolute; left:0; top:0; z-index:1; width:100%; height:0; padding-top:7.125%;
+  background:linear-gradient(to bottom, #488aca, rgba(72,138,202,0)); pointer-events:none;
+}
+.contents_div .ucp-hero-fade::after{
+  content:''; position:absolute; inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/180px 180px repeat;
+  mix-blend-mode:overlay; opacity:.42;
+  -webkit-mask-image:linear-gradient(to bottom, #000, transparent);
+          mask-image:linear-gradient(to bottom, #000, transparent);
+}
+.contents_div .ucp-hero-txt{                                                   /* 800×585 (원본 1600×1170) */
+  position:absolute; top:0; left:0; z-index:2;
+  width:100%; max-width:none; height:auto; aspect-ratio:1600/1170;
+  pointer-events:none; user-select:none;
+}
+.contents_div .ucp-fig{ position:relative; width:100%; overflow:hidden; background:#eee; }
+.contents_div .ucp-fig::before{ content:''; display:block; padding-top:var(--img-ratio); }
+.contents_div .ucp-fig img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+}
+
+/* ===== 앵커 내비 ===== */
+.contents_div .ucp-nav{ width:100%; background:var(--c-sky); padding:0 var(--gut); }
+.contents_div .ucp-nav ul{ display:grid; grid-template-columns:repeat(4,1fr); height:var(--nav-h); }
+.contents_div .ucp-nav li{ position:relative; display:flex; }
+.contents_div .ucp-nav li + li::before{
+  content:''; position:absolute; left:0; top:50%; width:1px; height:14px; margin-top:-7px;
+  background:rgba(255,255,255,.45);
+}
+.contents_div .ucp-nav-btn{
+  position:relative; flex:1 1 auto; display:flex; align-items:center; justify-content:center;
+  padding:0 4px; margin:0; border:0; background:none; cursor:pointer;
+  font-family:inherit; font-size:var(--fs-nav); font-weight:700; line-height:1.4; letter-spacing:-0.03em;
+  color:#fff; white-space:nowrap;
+  -webkit-tap-highlight-color:transparent; transition:color .2s;
+}
+.contents_div .ucp-nav-btn::after{
+  content:''; position:absolute; left:50%; bottom:14px; width:0; height:3px;
+  background:var(--c-lemon); border-radius:3px; transform:translateX(-50%); transition:width .25s;
+}
+.contents_div .ucp-nav-btn:focus{ outline:none; }
+.contents_div .ucp-nav-btn.is-on{ color:#fff; }
+.contents_div .ucp-nav-btn.is-on::after{ width:44%; }
+
+/* ===== 인트로 ===== */
+.contents_div .ucp-intro{ background:var(--c-cream); text-align:center; }
+.contents_div .ucp-h1{
+  font-size:calc(var(--fs-h2) + 4px);   /* 웹만 +4 */ font-weight:800; line-height:1.35; letter-spacing:-0.01em; color:var(--c-ink);
+}
+.contents_div .ucp-h1 em{ color:var(--c-sky); }
+.contents_div .ucp-bubble{
+  position:relative; max-width:560px; margin:var(--gap-blk) auto 0;
+  padding:22px 28px; border-radius:24px;
+  background:#fff; border:1px solid var(--c-line);
+}
+.contents_div .ucp-bubble::before{
+  content:''; position:absolute; left:50%; bottom:-9px; width:16px; height:16px; margin-left:-8px;
+  background:#fff; border-right:1px solid var(--c-line); border-bottom:1px solid var(--c-line);
+  transform:rotate(45deg); border-bottom-right-radius:3px;
+}
+.contents_div .ucp-bubble-fig{                              /* 말풍선 아래 이미지 560×208(웹), 배경 투명 */
+  position:relative; width:100%; max-width:560px; margin:18px auto 0;
+}
+.contents_div .ucp-bubble-fig::before{ content:''; display:block; padding-top:37.143%; }   /* 560×208 */
+.contents_div .ucp-bubble-fig img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.contents_div .ucp-bubble p{ font-size:var(--fs-lead); font-weight:600; line-height:1.6; color:var(--c-ink); }
+.contents_div .ucp-catch{
+  margin-top:var(--gap-blk);
+  font-family:'Paperozi','Pretendard',sans-serif;
+  font-size:calc(var(--fs-h3) + 3px); font-weight:800; line-height:1.45; color:var(--c-sky);   /* 웹만 +3 */
+}
+.contents_div .ucp-catch-hl{                                /* 형광펜: 글자 아래쪽 흰색 */
+  padding:0 .2em;
+  background:linear-gradient(to bottom, transparent 52%, #fff 52%, #fff 92%, transparent 92%);
+  -webkit-box-decoration-break:clone; box-decoration-break:clone;
+}
+.contents_div .ucp-lead{
+  margin-top:10px; font-size:var(--fs-lead); line-height:1.6; color:var(--c-ink2);
+}
+
+/* ===== 01 프로필 ===== */
+.contents_div #ucp-sec1{ background:var(--c-aqua); }
+.contents_div .ucp-stamp-wrap{
+  position:relative; display:inline-block; vertical-align:middle; margin-left:6px;
+  transform:rotate(-6deg) translateY(9px);
+}
+.contents_div .ucp-stamp{                                   /* 기존 대비 1.2배 */
+  position:relative; z-index:1; display:block; padding:5px 12px 4px;
+  border:3px solid var(--c-ink); border-radius:10px; color:var(--c-ink); background:var(--c-lemon);
+  font-size:.744em; font-weight:800; line-height:1.2;
+}
+.contents_div .ucp-stamp-ico{                               /* 펭귄 얼굴: 배지 뒤, 하단 10% 가려짐 */
+  position:absolute; left:50%; bottom:100%; z-index:0;
+  width:72.8px; height:72.8px; max-width:none; object-fit:contain;   /* 52 × 1.4 */
+  transform:translate(-50%, calc(10% + 17.5px));
+}
+.contents_div .ucp-profile{ background:#fff; border-radius:20px; overflow:hidden; border:1px solid var(--c-line); }
+.contents_div .ucp-pf{
+  display:grid; grid-template-columns:max-content 1fr;
+  padding:calc(var(--card-py) - 12px) var(--card-px);
+}
+.contents_div .ucp-pf-row{ display:contents; }
+.contents_div .ucp-pf dt,
+.contents_div .ucp-pf dd{
+  padding:14px 0; border-bottom:1px solid var(--c-line);
+  font-size:var(--fs-info); line-height:1.5;
+}
+.contents_div .ucp-pf-row:last-child dt,
+.contents_div .ucp-pf-row:last-child dd{ border-bottom:0; }
+.contents_div .ucp-pf dt{
+  padding-right:28px; font-weight:700; color:var(--c-sky); white-space:nowrap;
+}
+.contents_div .ucp-pf dd{ color:var(--c-ink2); }
+.contents_div .ucp-pf dd strong{ color:var(--c-ink); font-weight:700; }
+.contents_div .ucp-pf-box{ position:relative; }
+.contents_div .ucp-love{                                    /* 타원 스티커: 바깥 4px + 안쪽 2px 보더 (모바일 2px + 1px) */
+  position:absolute; right:calc(var(--card-px) + 16px); top:50%; z-index:2;
+  display:flex; align-items:center; justify-content:center;
+  width:clamp(115.2px, calc(115.2px + (100cqi - 569px) * 0.1949), 160.2px);   /* 래퍼 800→178 · 569(화면601)→128 연속 축소 */
+  height:clamp(66.6px, calc(66.6px + (100cqi - 569px) * 0.1111), 92.25px);
+  padding-top:2px;
+  border:4px solid #7db8e8; border-radius:50%; background:#f8f6d2;
+  text-align:center; font-size:clamp(13.5px, calc(13.5px + (100cqi - 569px) * 0.0128), 16.2px);   /* 780~800에서 16.2px 유지, 601에서 13.5px */ font-weight:800; line-height:1.22; color:var(--c-sky-dp);
+  transform:translateY(calc(-50% + 51.5px)) rotate(-8deg);
+}
+.contents_div .ucp-love::before{
+  content:''; position:absolute; inset:5px; border:2px solid #7db8e8; border-radius:50%; pointer-events:none;
+}
+.contents_div .ucp-love-tx{ position:relative; display:block; font-family:'Paperozi','Pretendard',sans-serif; font-weight:900; letter-spacing:-0.01em; }
+.contents_div .ucp-love-ht{ color:inherit; }
+
+/* ===== 02 마음 아픈 사정 ===== */
+.contents_div #ucp-sec2{ background:var(--c-sky); color:#fff; }
+.contents_div #ucp-sec2 .ucp-h2{ color:#fff; }
+.contents_div #ucp-sec2 .ucp-txt{ color:#fff; }
+.contents_div #ucp-sec2 .ucp-txt strong{ color:#fff; font-weight:700; }
+.contents_div .ucp-stats{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  margin:var(--gap-blk) 0; border-top:1px solid rgba(255,255,255,.4); border-bottom:1px solid rgba(255,255,255,.4);
+}
+.contents_div .ucp-stats li{
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:6px;
+  padding:24px 8px; text-align:center;
+}
+.contents_div .ucp-stats li + li{ border-left:1px solid rgba(255,255,255,.4); }
+.contents_div .ucp-stat-lb{ font-size:var(--fs-tagcap); font-weight:500; line-height:1.4; color:#e6f0fa; }
+.contents_div .ucp-stat-num{ font-size:var(--fs-h2); font-weight:800; line-height:1.2; color:var(--c-lemon); letter-spacing:-0.02em; }
+.contents_div .ucp-why{
+  padding:var(--card-py) var(--card-px); border-radius:20px; background:var(--c-sky-dk);
+}
+
+/* ===== 03 약속 ===== */
+.contents_div #ucp-sec3{ background:var(--c-ice); padding-bottom:calc(var(--band) + 15px); }
+.contents_div #ucp-sec3 .ucp-h2{ color:#235a92; }
+.contents_div #ucp-sec3 .ucp-promise{ border-top-color:var(--c-sky); }
+.contents_div #ucp-sec3 .ucp-promise li{ color:#2f679e; border-bottom-color:rgba(71,139,202,.28); }
+.contents_div .ucp-promise{ border-top:2px solid var(--c-ink); }
+.contents_div .ucp-promise li{
+  position:relative; padding:18px 4px 18px 69px; border-bottom:1px solid var(--c-line);
+  font-size:var(--fs-body); line-height:1.6; font-weight:500;
+}
+.contents_div .ucp-promise li::before{                     /* 체크: 굵기 3px, 끝 둥글게, 첫 줄 가운데 */
+  content:''; position:absolute; left:36px; top:calc(18px + (1.6em - 18.7px) / 2);   /* 시각 보정: 왼쪽으로 살짝 치우치게 들여씀 */
+  width:18.7px; height:18.7px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18.7 18.7' fill='none' stroke='%23478bca' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.4 9.78l3.91 3.91L15.3 5.44'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* ===== 04 관람 안내 ===== */
+.contents_div #ucp-sec4{ background:var(--c-yellow); }
+.contents_div .ucp-info{ background:#fff; border-radius:20px; border:1px solid var(--c-line); overflow:hidden; }
+.contents_div .ucp-info-map{ border-bottom:1px solid var(--c-line); }   /* 지도: 상하좌우 여백 없이, 아래 100% 실선 */
+.contents_div .ucp-map-in{                                  /* 지도 원본 비율(1825×862) 레이어 — cover처럼 높이 채우고 가운데 기준 */
+  position:absolute; top:0; left:50%; height:100%; aspect-ratio:1825/862;
+  transform:translateX(-50%); container-type:inline-size;
+}
+.contents_div .ucp-map-lbs li{
+  position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%);
+  font-size:max(10px, 1.37cqi); font-weight:600; line-height:1.2; letter-spacing:-0.02em;
+  color:#555; text-align:center; white-space:nowrap; pointer-events:none;
+  text-shadow:0 0 2px #fff, 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+}
+.contents_div .ucp-map-ico{                                 /* 장소 아이콘: 이름 위에 */
+  position:absolute; left:50%; bottom:100%; margin-bottom:3px;
+  width:max(14px, 1.75cqi); transform:translateX(-50%);
+  filter:drop-shadow(0 0 1.5px #fff);
+}
+.contents_div .ucp-map-ico svg{ display:block; width:100%; height:auto; }
+.contents_div .ucp-map-scale{                               /* 축척: 보이는 영역 좌측 하단, 막대 길이는 원본 지도 기준 30m */
+  position:absolute; bottom:max(10px, 1.6cqi); left:calc((100% - var(--map-vis)) / 2 + max(12px, 1.8cqi));
+  display:flex; align-items:flex-end; gap:max(4px, .5cqi);
+  font-size:max(10px, 1.1cqi); font-weight:700; line-height:1; color:#333;
+  text-shadow:0 0 2px #fff, 0 0 2px #fff;
+}
+.contents_div .ucp-map-scale i{
+  display:block; width:5.93cqi; height:max(5px, .6cqi);
+  border:solid #333; border-width:0 1.5px 1.5px; box-shadow:0 1px 0 rgba(255,255,255,.7);
+}
+.contents_div .ucp-map-pin{
+  position:absolute; left:var(--x); top:var(--y); z-index:1;
+  width:max(27px, 3.9cqi);   /* 1.5배 */ transform:translate(-50%,-100%);
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.22));
+}
+.contents_div .ucp-map-pin svg{ display:block; width:100%; height:auto; }
+.contents_div .ucp-info-in{ padding:var(--card-py) var(--card-px) 0; }
+.contents_div .ucp-info .ucp-pf{ padding:4px 0 calc(var(--card-py) - 14px); }
+.contents_div .ucp-info-title{ display:flex; align-items:center; gap:8px; padding-bottom:14px; border-bottom:1px solid var(--c-line); }
+.contents_div .ucp-info-title::before{
+  content:''; flex:0 0 auto; width:24px; height:24px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23478bca' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5.5'/%3E%3Cpath d='M12 7.6h.01'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.contents_div .ucp-note{ display:inline; font-size:.9em; color:var(--c-ink2); margin-left:4px; }
+.contents_div .ucp-etq-box{
+  display:grid; grid-template-columns:max-content 1fr; align-items:center; gap:0 36px;
+  margin-top:var(--gap-blk); padding:calc(var(--card-py) - 8px) var(--card-px);
+  border-radius:20px; background:var(--c-sky); color:#fff;
+}
+.contents_div .ucp-etq-box .ucp-etq-title{
+  align-self:stretch; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:6px 36px 6px 0; border-right:1px solid rgba(255,255,255,.35);
+  color:var(--c-lemon); line-height:1.35; text-align:center;
+}
+.contents_div .ucp-etq-ico{
+  display:block; flex:0 0 auto; width:36px; height:32px; margin-bottom:10px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 36'%3E%3Cpolygon points='20,5 36,31 4,31' fill='%23f4ff58' stroke='%23f4ff58' stroke-width='7' stroke-linejoin='round'/%3E%3Crect x='18.2' y='12.5' width='3.6' height='10.5' rx='1.8' fill='%23478bca'/%3E%3Ccircle cx='20' cy='27.3' r='2.1' fill='%23478bca'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.contents_div .ucp-etq li{
+  padding:11px 0; border-bottom:1px solid rgba(255,255,255,.22);
+  font-size:var(--fs-info); font-weight:500; line-height:1.5; color:#fff;
+}
+.contents_div .ucp-etq li:last-child{ border-bottom:0; }
+.contents_div .ucp-cta-wrap{ padding-top:var(--gap-blk); text-align:center; }
+.contents_div .ucp-cta{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:56px; padding:0 30px; border-radius:999px;
+  background:#225c96; color:#fff; text-decoration:none;
+  font-size:var(--fs-cta); font-weight:700; line-height:1.45;
+  transition:background .2s;
+}
+.contents_div .ucp-cta-arw{ font-size:var(--fs-arrow); line-height:1; color:var(--c-lemon); transition:transform .2s; }
+.contents_div .ucp-cta:focus{ outline:none; }
+.contents_div .ucp-cta:focus-visible{ outline:2px solid var(--c-sky); outline-offset:3px; }
+
+/* ===== 푸터 ===== */
+.contents_div .ucp-foot{ background:#225c96; text-align:center; }   /* CTA 버튼과 같은 색 */
+.contents_div .ucp-foot-title{
+  font-size:var(--fs-foot); font-weight:800; line-height:1.4; letter-spacing:-0.01em; color:#fff;
+}
+.contents_div .ucp-foot-title em{ color:var(--c-lemon); }
+.contents_div .ucp-tags{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
+  padding-top:var(--gap-head);
+}
+.contents_div .ucp-tags li{
+  display:inline-flex; align-items:center; height:var(--lb-h); padding:0 var(--lb-px);
+  border:1px solid rgba(255,255,255,.5); border-radius:999px;
+  font-size:var(--fs-hash); font-weight:700; line-height:1.35; color:#fff;
+}
+
+/* ===== 반응형 ===== */
+@media (hover:hover) and (pointer:fine){
+  .contents_div .ucp-nav-btn:hover::after{ width:44%; }   /* 호버 시 언더라인 */
+  .contents_div .ucp-cta:hover{ background:#1b4e80; }
+  .contents_div .ucp-cta:hover .ucp-cta-arw{ transform:translateX(3px); }
+}
+.contents_div .ucp-nav-btn:active{ color:#fff; }
+.contents_div .ucp-cta:active{ background:#1b4e80; }
+
+@media (max-width:600px){
+  .contents_div .ucp-wrap{
+    --fs-foot:clamp(18px, calc(18px + (100vw - 375px) * 0.0857), 21px);
+    --fs-h3:clamp(16px, calc(16px + (100vw - 375px) * 0.0286), 17px);
+    --fs-body:clamp(13.5px, calc(13.5px + (100vw - 375px) * 0.0143), 14px);
+    --fs-lead:var(--fs-body); --fs-info:var(--fs-body); --fs-cta:var(--fs-body);
+    --fs-arrow:15px; --fs-nav:13px; --fs-kicker:11.5px; --fs-num:10px; --fs-tagcap:10px;
+    --fs-label:10px; --fw-label:400; --fs-caption:10px;
+    --fs-hash:clamp(10.5px, calc(10.5px + (100vw - 375px) * 0.0143), 11px);
+    --gut:22px;
+    --card-py:22px; --card-px:17px;
+    --kick:22px; --lb-h:21px; --lb-px:9px;
+    --img-ratio:75%; --map-vis:62.98%;
+    --nav-h:48px;
+    --gap-head:24px; --gap-blk:22px;
+  }
+  .contents_div .ucp-br--web{ display:none; }
+  .contents_div .ucp-br--mo,
+  .contents_div .ucp-br--mo-wide{ display:inline; }
+
+  .contents_div .ucp-h2,
+  .contents_div .ucp-h1{ font-size:var(--fs-h2); line-height:1.4; }   /* 모바일은 기존 크기 */
+  .contents_div .ucp-h3{ line-height:1.5; }
+  .contents_div .ucp-nav-btn{ line-height:1.35; }
+  .contents_div .ucp-nav-btn.is-on::after{ width:56%; height:2px; }
+  .contents_div .ucp-nav-btn::after{ bottom:10px; }
+
+  .contents_div .ucp-bubble{ padding:16px 18px; border-radius:18px; }
+  .contents_div .ucp-catch{ font-size:var(--fs-h3); }   /* 모바일은 기존 크기 */
+  .contents_div .ucp-lead{ padding:0 5%; }
+
+  .contents_div .ucp-profile,
+  .contents_div .ucp-info,
+  .contents_div .ucp-why{ border-radius:14px; }
+  .contents_div .ucp-pf dt,
+  .contents_div .ucp-pf dd{ padding:12px 0; }
+  .contents_div .ucp-pf dt{ padding-right:18px; }
+  .contents_div .ucp-info .ucp-pf{ padding:0 0 calc(var(--card-py) - 12px); }
+  .contents_div .ucp-note{ display:block; margin:2px 0 0; line-height:1.4; }
+  .contents_div .ucp-map-sub{ display:none; }
+  .contents_div .ucp-map-lbs li.ucp-map-up{ transform:translate(-50%, calc(-50% - 17px)); }   /* 핀과 겹치지 않게 위로 */                 /* 모바일: 글자 겹침 방지, 주요 장소만 표시 */
+  .contents_div .ucp-info-title{ gap:6px; padding-bottom:12px; }
+  .contents_div .ucp-info-title::before{ width:19px; height:19px; }
+  .contents_div .ucp-profile .ucp-pf{ grid-template-columns:1fr; }
+  .contents_div .ucp-pf-row--wt dd{ position:relative; }
+  .contents_div .ucp-love{ top:auto; bottom:0; right:4px; width:124px; height:74px; font-size:var(--fs-info); border-width:2px; transform:translateY(calc(50% - 9px)) rotate(-8deg); }
+  .contents_div .ucp-love::before{ inset:4.5px; border-width:1px; }
+  .contents_div .ucp-profile .ucp-pf dt{ padding-bottom:3px; border-bottom:0; }
+  .contents_div .ucp-profile .ucp-pf dd{ padding-top:0; }
+  .contents_div .ucp-stamp-wrap{ margin-left:4px; transform:rotate(-6deg) translateY(6.5px); }
+  .contents_div .ucp-stamp{ padding:4px 8px 2px; border-width:2px; border-radius:7px; }
+  .contents_div .ucp-stamp-ico{ width:50.4px; height:50.4px; transform:translate(-50%, calc(10% + 12.5px)); }
+
+  .contents_div .ucp-stats{ grid-template-columns:1fr; }
+  .contents_div .ucp-stats li{ flex-direction:row; justify-content:space-between; align-items:center; padding:14px 2px; text-align:left; }
+  .contents_div .ucp-stats li + li{ border-left:0; border-top:1px solid rgba(255,255,255,.4); }
+  .contents_div .ucp-stat-lb{ font-size:var(--fs-body); }
+  .contents_div .ucp-stat-num{ font-size:var(--fs-h3); white-space:nowrap; }
+
+  .contents_div .ucp-sec{ padding-top:calc(var(--band) + 10px); padding-bottom:calc(var(--band) + 10px); }   /* 모바일 섹션 상하 +10 */
+  .contents_div #ucp-sec3{ padding-bottom:calc(var(--band) + 20px); }
+  .contents_div .ucp-promise li{ padding:14px 2px 14px 34px; text-wrap:pretty; }   /* 줄 끝까지 채우고, 마지막 줄에 한 단어만 남지 않게 */
+  .contents_div .ucp-promise li::before{ left:9px; top:calc(14px + (1.6em - 14.5px) / 2); width:14.5px; height:14.5px; }
+  .contents_div .ucp-etq-box{ grid-template-columns:1fr; padding:var(--card-py) var(--card-px) calc(var(--card-py) - 8px); border-radius:14px; }
+  .contents_div .ucp-etq-box .ucp-etq-title{ flex-direction:row; justify-content:center; gap:7px; padding:0 0 10px; border-right:0; border-bottom:1px solid rgba(255,255,255,.35); text-align:center; }
+  .contents_div .ucp-etq-ico{ width:22px; height:20px; margin-bottom:0; }
+  .contents_div .ucp-etq li{ padding:10px 0; text-align:center; }
+  .contents_div .ucp-cta{ display:flex; width:100%; min-height:48px; padding:0 18px; }
+  .contents_div .ucp-cta-wrap{ padding-bottom:var(--card-py); }
+
+  .contents_div .ucp-foot-title{ line-height:1.42; }
+  .contents_div .ucp-tags{ gap:4px 12px; }
+  .contents_div .ucp-tags li{ height:auto; padding:0; border:0; border-radius:0; font-weight:400; }
+}
+@media (max-width:480px){
+  .contents_div .ucp-wrap{
+    --fs-nav:clamp(12.5px, calc(12.5px + (100vw - 375px) * 0.0286), 13.5px);
+    --gut:15px;
+    --nav-h:44px;
+  }
+  .contents_div .ucp-lead{ padding:0; }
+  .contents_div .ucp-nav-btn::after{ bottom:9px; }
+}
+@media (max-width:420px){
+  .contents_div .ucp-wrap{
+    --band:40px;
+    --card-py:19px; --card-px:14px;
+  }
+  .contents_div .ucp-br--mo-wide{ display:none; }
+  .contents_div .ucp-br--m420{ display:inline; }
+  .contents_div .ucp-love{ width:111.6px; height:66.6px; font-size:calc(var(--fs-info) * .9); }   /* 124×74의 90% */
+}
+</style>
+
+<article class="ucp-wrap">
+
+  <section class="ucp-hero">
+    <div class="ucp-hero-top"></div>
+    <div class="ucp-hero-photo">
+      <img src="img/히어로이미지.webp" alt="서울어린이대공원에서 광주 우치동물원으로 이사 온 자카스펭귄들" width="800" height="577" fetchpriority="high" loading="eager" decoding="async">
+      <span class="ucp-hero-fade" aria-hidden="true"></span>
+    </div>
+    <img class="ucp-hero-txt" src="img/히어로텍스트.webp" alt="" aria-hidden="true" width="800" height="585" fetchpriority="high" loading="eager" decoding="async">
+  </section>
+
+  <nav class="ucp-nav" aria-label="본문 바로가기">
+    <ul>
+      <li><button type="button" class="ucp-nav-btn" data-go="ucp-sec1">펭귄 프로필</button></li>
+      <li><button type="button" class="ucp-nav-btn" data-go="ucp-sec2">아픈 사정</button></li>
+      <li><button type="button" class="ucp-nav-btn" data-go="ucp-sec3">동물원 약속</button></li>
+      <li><button type="button" class="ucp-nav-btn" data-go="ucp-sec4">관람 안내</button></li>
+    </ul>
+  </nav>
+
+  <section class="ucp-sec ucp-intro">
+    <h1 class="ucp-h1">안녕하세요! 서울에서<br><em>우치동물원</em>으로 이사 왔어요!</h1>
+    <blockquote class="ucp-bubble">
+      <p>“저희는 아프리카에서 온 자카스펭귄 11마리예요!<span class="ucp-br ucp-br--web"></span> 이번에 우치동물원으로 이사를 왔어요.<span class="ucp-br ucp-br--web"></span> 짐 정리는 끝났으니, 저희 보러 오실래요?”</p>
+    </blockquote>
+    <div class="ucp-bubble-fig">
+      <img src="img/말풍선이미지.webp" alt="" loading="lazy" decoding="async">
+    </div>
+    <p class="ucp-catch"><span class="ucp-catch-hl">키 70cm, 몸무게 3kg, 귀여움은 무한대!</span></p>
+    <p class="ucp-lead">우치동물원에 새 가족이 생겼어요. 아프리카에서 온 자카스펭귄 11마리가<span class="ucp-br ucp-br--web"></span> 서울어린이대공원에서 우치동물원으로 이사를 왔습니다.<span class="ucp-br ucp-br--web"></span> 귀여운 새 이웃들을 따뜻하게 맞이해 볼까요?</p>
+  </section>
+
+  <div class="ucp-group" data-kicker="01">
+    <section class="ucp-sec" id="ucp-sec1" tabindex="-1" aria-labelledby="ucp-h2-1">
+      <div class="ucp-head">
+        <h2 class="ucp-h2" id="ucp-h2-1">새 이웃 펭귄 프로필 <span class="ucp-stamp-wrap"><img class="ucp-stamp-ico" src="img/펭귄얼굴.webp" alt="" aria-hidden="true" width="73" height="73"><em class="ucp-stamp">알려드림</em></span></h2>
+      </div>
+      <div class="ucp-profile">
+        <figure class="ucp-fig ucp-pf-fig">
+          <img src="img/펭귄프로필.webp" alt="우치동물원 새 보금자리에 모여 있는 자카스펭귄들" loading="lazy" decoding="async">
+        </figure>
+        <div class="ucp-pf-box">
+        <dl class="ucp-pf">
+          <div class="ucp-pf-row"><dt>이름</dt><dd><strong>자카스펭귄</strong><span class="ucp-br ucp-br--m420"></span>(아프리카펭귄이라고도 불러요)</dd></div>
+          <div class="ucp-pf-row"><dt>고향</dt><dd>남아프리카 해안의 따뜻한 바다 근처</dd></div>
+          <div class="ucp-pf-row"><dt>키</dt><dd>성체 약 70cm</dd></div>
+          <div class="ucp-pf-row ucp-pf-row--wt"><dt>몸무게</dt><dd>3kg 내외 앙증맞은 크기<span class="ucp-love"><span class="ucp-love-tx">자카스펭귄<br>작고 소중해 <span class="ucp-love-ht">♥</span></span></span></dd></div>
+          <div class="ucp-pf-row"><dt>매력 포인트</dt><dd>짧은 다리로 뒤뚱뒤뚱! 치명적 귀여움</dd></div>
+        </dl>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ucp-group" data-kicker="02">
+    <section class="ucp-sec" id="ucp-sec2" tabindex="-1" aria-labelledby="ucp-h2-2">
+      <div class="ucp-head">
+        <h2 class="ucp-h2" id="ucp-h2-2">그런데 이 귀여운 친구들에게는<br>마음 아픈 사정이 있어요</h2>
+      </div>
+      <p class="ucp-txt">자카스펭귄은 2024년 국제자연보전연맹(IUCN) 적색목록에서 ‘위급(CR)’ 등급으로 올라갈 만큼 심각한 멸종위기에 처해 있어요. 한때 수백만 쌍에 달하던 개체가 지난 한 세기 동안 약 97% 줄었고, 국제적 멸종위기종(CITES) 2급으로도 지정됐답니다.</p>
+      <ul class="ucp-stats">
+        <li><span class="ucp-stat-lb">2024년 IUCN 적색목록</span><strong class="ucp-stat-num">위급(CR)</strong></li>
+        <li><span class="ucp-stat-lb">지난 한 세기 개체 감소</span><strong class="ucp-stat-num">약 97%</strong></li>
+        <li><span class="ucp-stat-lb">국제적 멸종위기종</span><strong class="ucp-stat-num">CITES 2급</strong></li>
+      </ul>
+      <div class="ucp-why">
+        <p class="ucp-txt">이유는 사람의 어류 남획으로 먹이가 줄어든 데다 기후 변화까지 겹쳤기 때문이에요. 전문가들은 적극적인 대응이 없으면 10년 안에 야생에서 자카스펭귄이 완전히 사라질 수도 있다고 경고하고 있는데요. <strong>그래서 모두의 관심과 보호가 필요하답니다.</strong></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="ucp-group" data-kicker="03">
+    <section class="ucp-sec" id="ucp-sec3" tabindex="-1" aria-labelledby="ucp-h2-3">
+      <div class="ucp-head">
+        <h2 class="ucp-h2" id="ucp-h2-3">펭귄들의 이사를 맞아<br>우치동물원이 약속해요<span class="ucp-h2-emo" aria-hidden="true">🤝</span></h2>
+      </div>
+      <ul class="ucp-promise">
+        <li>시민들이 펭귄의 생태와 특성을 가까이에서 관찰할 수&nbsp;있도록 해요.</li>
+        <li>동물의 건강과 복지를 고려한 사육 환경을 만들어요.</li>
+        <li>멸종위기 야생동물에 대한 관심과 이해를 높일 수&nbsp;있게 노력해요.</li>
+        <li>야생동물 보전의 중요성을 알리는 체험의 장이 될게요.</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="ucp-group" data-kicker="04">
+    <section class="ucp-sec" id="ucp-sec4" tabindex="-1" aria-labelledby="ucp-h2-4">
+      <div class="ucp-head">
+        <h2 class="ucp-h2" id="ucp-h2-4">자카스펭귄을 보고<span class="ucp-h2-emo" aria-hidden="true">👀</span> 싶다면?</h2>
+      </div>
+      <div class="ucp-info">
+        <div class="ucp-fig ucp-info-map">
+          <div class="ucp-map-in">
+            <img src="img/지도.webp" alt="광주 북구 우치로 677 우치동물원 위치 지도" loading="lazy" decoding="async">
+            <ul class="ucp-map-lbs" aria-hidden="true">
+            <li style="--x:51.06%;--y:7.54%">시계탑</li>
+            <li style="--x:67.74%;--y:19.75%">의무실</li>
+            <li class="ucp-map-up" style="--x:36.83%;--y:31.78%">전기차충전소</li>
+            <li style="--x:54.7%;--y:31.78%">이마트24</li>
+            <li class="ucp-map-sub" style="--x:62.07%;--y:35.55%">토토로분식</li>
+            <li class="ucp-map-sub" style="--x:78.75%;--y:33.39%">광주랜드<br>자이로드롭</li>
+            <li class="ucp-map-sub" style="--x:80.02%;--y:40.75%">무지개극장</li>
+            <li style="--x:72.14%;--y:45.6%">회전목마</li>
+            <li class="ucp-map-sub" style="--x:81.12%;--y:47.4%">바이킹</li>
+            <li style="--x:48.86%;--y:53.86%">씽씽보트</li>
+            <li class="ucp-map-sub" style="--x:70.28%;--y:51.53%">꼬마비행기</li>
+            <li style="--x:66.81%;--y:64.99%">개구리점프</li>
+            <li class="ucp-map-sub" style="--x:76.63%;--y:66.25%">드롭탑</li>
+            <li style="--x:55.12%;--y:66.79%">타가디스코</li>
+            <li class="ucp-map-sub" style="--x:74.09%;--y:71.81%">미니셔틀</li>
+            <li style="--x:69.94%;--y:78.99%">스타워즈</li>
+            <li style="--x:38.1%;--y:83.12%"><span class="ucp-map-ico"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5e9c4f"/><path d="M10 3.6 5.6 10h2.3l-2.9 4h4.1v2.6h1.8V14H15l-2.9-4h2.3z" fill="#fff"/></svg></span>우치공원</li>
+            <li class="ucp-map-sub" style="--x:68.93%;--y:94.08%">카오스</li>
+            <li class="ucp-map-sub" style="--x:77.05%;--y:93.36%">야외공연장</li>
+            <li class="ucp-map-sub" style="--x:61.73%;--y:96.41%">짝꿍놀이터</li>
+            </ul>
+            <span class="ucp-map-scale" aria-hidden="true"><i></i>30m</span>
+            <span class="ucp-map-pin" aria-hidden="true" style="--x:36.66%;--y:45.6%"><svg viewBox="0 0 24 34"><path d="M12 33C12 33 1 19.5 1 12a11 11 0 0 1 22 0c0 7.5-11 21-11 21z" fill="#478bca"/><circle cx="12" cy="12" r="4.4" fill="#fff"/></svg></span>
+          </div>
+        </div>
+        <div class="ucp-info-in">
+        <h3 class="ucp-h3 ucp-info-title">광주 우치동물원 운영 안내</h3>
+        <dl class="ucp-pf">
+          <div class="ucp-pf-row"><dt>위치</dt><dd><address>북구 우치로 677</address></dd></div>
+          <div class="ucp-pf-row"><dt>관람 시간</dt><dd>연중무휴 <time datetime="09:00">9:00</time>~<time datetime="18:00">18:00</time><span class="ucp-note">(폐장 1시간 전까지 입장 가능)</span></dd></div>
+          <div class="ucp-pf-row"><dt>입장 요금</dt><dd><strong>무료</strong></dd></div>
+        </dl>
+        </div>
+      </div>
+      <div class="ucp-etq-box">
+      <h3 class="ucp-h3 ucp-etq-title"><span class="ucp-etq-ico" aria-hidden="true"></span><span class="ucp-etq-tt">관람<span class="ucp-br ucp-br--web"></span> 에티켓</span></h3>
+      <ul class="ucp-etq">
+        <li>사람이 먹는 음식, 주변의 풀을 먹으면<span class="ucp-br ucp-br--m420"></span> 동물이 아파요.</li>
+        <li>돌이나 쓰레기를 던지면 동물이 위험해져요.</li>
+        <li>자는 동물을 깨우지 않게 조용히 관람해 주세요.</li>
+        <li>동물의 관람 시간을 꼭 지켜주세요.</li>
+        <li>전염병 예방을 위해 반려동물은 입장할 수 없어요.</li>
+      </ul>
+      </div>
+      <div class="ucp-cta-wrap">
+        <a class="ucp-cta" href="https://www.gwangju.go.kr/uchipark/" target="_blank" rel="noopener">광주 우치동물원 누리집 바로가기<span class="ucp-cta-arw" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </div>
+
+  <footer class="ucp-sec ucp-foot">
+    <p class="ucp-foot-title">작고 소중한 친구 자카스펭귄이 살고 있는<span class="ucp-br ucp-br--web"></span> <em>우치동물원</em>에 많은 발걸음 바랄게요!</p>
+    <ul class="ucp-tags" aria-label="관련 태그">
+      <li>#우치동물원</li>
+      <li>#광주우치동물원</li>
+      <li>#자카스펭귄</li>
+      <li>#아프리카펭귄</li>
+      <li>#멸종위기종</li>
+      <li>#IUCN적색목록</li>
+      <li>#서울어린이대공원</li>
+      <li>#야생동물보전</li>
+      <li>#광주가볼만한곳</li>
+      <li>#전남광주통합특별시</li>
+    </ul>
+  </footer>
+
+</article>
+
+<script>
+(function(){
+  var root = document.querySelector('.contents_div');
+  if(!root) return;
+  var wrap = root.querySelector('.ucp-wrap');
+  if(!wrap) return;
+  var btns = wrap.querySelectorAll('.ucp-nav-btn');
+
+  function setOn(id){
+    for(var i=0;i<btns.length;i++){
+      btns[i].classList.toggle('is-on', btns[i].getAttribute('data-go') === id);
+    }
+  }
+
+  for(var i=0;i<btns.length;i++){
+    btns[i].addEventListener('click', function(){
+      var id = this.getAttribute('data-go');
+      var t = wrap.querySelector('#' + id);
+      if(!t) return;
+      var y = t.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
+      try{ window.scrollTo({ top:y, behavior:'smooth' }); }catch(e){ window.scrollTo(0, y); }
+      try{ t.focus({ preventScroll:true }); }catch(e){}
+      setOn(id);
+    });
+  }
+
+  if(window.IntersectionObserver){
+    var secs = wrap.querySelectorAll('#ucp-sec1,#ucp-sec2,#ucp-sec3,#ucp-sec4');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting) setOn(en.target.id);
+      });
+    }, { rootMargin:'-45% 0px -50% 0px' });
+    for(var k=0;k<secs.length;k++) io.observe(secs[k]);
+  }
+})();
+</script>
+</div>
