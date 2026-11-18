@@ -101,7 +101,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 
 /* ===== 히어로 ===== */
 .contents_div .ucp-hero{ position:relative; width:100%; background:#488aca; overflow:hidden; }
-.contents_div .ucp-hero-top{ position:relative; width:100%; padding-top:59.1875%; }              /* 800×473.5 (원본 1600×947) */
+.contents_div .ucp-hero-top{ position:relative; width:100%; padding-top:61.6875%; }              /* 800×493.5 (기존 473.5 +20) */
 .contents_div .ucp-hero-top::after{                                            /* 블루 영역 노이즈 */
   content:''; position:absolute; inset:0; pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/180px 180px repeat;
@@ -400,7 +400,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   .contents_div .ucp-br--mo-wide{ display:inline; }
 
   .contents_div .ucp-h2,
-  .contents_div .ucp-h1{ font-size:var(--fs-h2); line-height:1.4; }   /* 모바일은 기존 크기 */
+  .contents_div .ucp-h1{ font-size:calc(var(--fs-h2) + 3px); line-height:1.4; }   /* 모바일 +3 */
   .contents_div .ucp-h3{ line-height:1.5; }
   .contents_div .ucp-nav-btn{ line-height:1.35; }
   .contents_div .ucp-nav-btn.is-on::after{ width:56%; height:2px; }
@@ -428,6 +428,8 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   .contents_div .ucp-love::before{ inset:4.5px; border-width:1px; }
   .contents_div .ucp-profile .ucp-pf dt{ padding-bottom:3px; border-bottom:0; }
   .contents_div .ucp-profile .ucp-pf dd{ padding-top:0; }
+  .contents_div .ucp-profile .ucp-pf dt,
+  .contents_div .ucp-profile .ucp-pf dd{ font-size:calc(var(--fs-info) + .5px); }   /* 프로필만 +0.5 */
   .contents_div .ucp-stamp-wrap{ margin-left:4px; transform:rotate(-6deg) translateY(6.5px); }
   .contents_div .ucp-stamp{ padding:4px 8px 2px; border-width:2px; border-radius:7px; }
   .contents_div .ucp-stamp-ico{ width:50.4px; height:50.4px; transform:translate(-50%, calc(10% + 12.5px)); }
@@ -438,15 +440,15 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   .contents_div .ucp-stat-lb{ font-size:var(--fs-body); }
   .contents_div .ucp-stat-num{ font-size:var(--fs-h3); white-space:nowrap; }
 
-  .contents_div .ucp-sec{ padding-top:calc(var(--band) + 10px); padding-bottom:calc(var(--band) + 10px); }   /* 모바일 섹션 상하 +10 */
-  .contents_div #ucp-sec3{ padding-bottom:calc(var(--band) + 20px); }
+  .contents_div .ucp-sec{ padding-top:calc(var(--band) + 10px); padding-bottom:calc(var(--band) + 3px); }   /* 모바일 섹션 상 +10, 하 +3 */
+  .contents_div #ucp-sec3{ padding-bottom:calc(var(--band) + 13px); }
   .contents_div .ucp-promise li{ padding:14px 2px 14px 34px; text-wrap:pretty; }   /* 줄 끝까지 채우고, 마지막 줄에 한 단어만 남지 않게 */
   .contents_div .ucp-promise li::before{ left:9px; top:calc(14px + (1.6em - 14.5px) / 2); width:14.5px; height:14.5px; }
   .contents_div .ucp-etq-box{ grid-template-columns:1fr; padding:var(--card-py) var(--card-px) calc(var(--card-py) - 8px); border-radius:14px; }
   .contents_div .ucp-etq-box .ucp-etq-title{ flex-direction:row; justify-content:center; gap:7px; padding:0 0 10px; border-right:0; border-bottom:1px solid rgba(255,255,255,.35); text-align:center; }
   .contents_div .ucp-etq-ico{ width:22px; height:20px; margin-bottom:0; }
   .contents_div .ucp-etq li{ padding:10px 0; text-align:center; }
-  .contents_div .ucp-cta{ display:flex; width:100%; min-height:48px; padding:0 18px; }
+  .contents_div .ucp-cta{ display:flex; width:100%; min-height:58px; padding:0 18px; }
   .contents_div .ucp-cta-wrap{ padding-bottom:var(--card-py); }
 
   .contents_div .ucp-foot-title{ line-height:1.42; }
@@ -624,10 +626,10 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
       <li>#우치동물원</li>
       <li>#광주우치동물원</li>
       <li>#자카스펭귄</li>
-      <li>#아프리카펭귄</li>
-      <li>#멸종위기종</li>
+      <li>#주말힐링</li>
+      <li>#주말나들이</li>
       <li>#IUCN적색목록</li>
-      <li>#서울어린이대공원</li>
+      <li>#전남광주동물원</li>
       <li>#야생동물보전</li>
       <li>#광주가볼만한곳</li>
       <li>#전남광주통합특별시</li>
