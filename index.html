@@ -91,7 +91,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 .contents_div .ucp-sec:focus{ outline:none; }
 .contents_div .ucp-head{ text-align:center; padding-bottom:var(--gap-head); }
 .contents_div .ucp-h2{
-  font-size:calc(var(--fs-h2) + 4px);   /* 웹만 +4 */ font-weight:800; line-height:1.35; letter-spacing:-0.01em; color:var(--c-ink);
+  font-size:calc(var(--fs-h2) + 4px);   /* 웹만 +4 */ font-weight:900; line-height:1.35; letter-spacing:-0.01em; color:var(--c-ink);
 }
 .contents_div .ucp-kicker{                                 /* 키커 캡슐: 번호 + 섹션명 (내비 문구와 동일) */
   display:inline-flex; align-items:center; gap:8px; height:var(--kick); margin-bottom:14px; padding:0 16px 0 6px;
@@ -104,10 +104,10 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   background:var(--c-lemon); color:var(--c-ink); font-size:var(--fs-num); font-weight:800;
 }
 .contents_div .ucp-h2-ico{                                 /* h2 글자 앞 아이콘: 행간에 영향 없게 자리만 잡고 이미지는 띄움 */
-  position:relative; display:inline-block; width:1.5em; height:.7em; margin-right:.12em; vertical-align:baseline;
+  position:relative; display:inline-block; width:2.087em; height:.7em; margin-right:.12em; vertical-align:baseline;
 }
 .contents_div .ucp-h2-ico img{
-  position:absolute; left:0; top:50%; width:1.5em; height:1.5em; max-width:none; object-fit:contain; transform:translateY(-58%);
+  position:absolute; left:0; top:50%; width:2.087em; height:2.087em; max-width:none; object-fit:contain; transform:translateY(calc(-58% + 4px));   /* 웹 4px 아래로 */
 }
 .contents_div .ucp-h3{
   font-size:var(--fs-h3); font-weight:700; line-height:1.45; color:var(--c-ink);
@@ -174,7 +174,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 /* ===== 인트로 ===== */
 .contents_div .ucp-intro{ background:var(--c-cream); text-align:center; }
 .contents_div .ucp-h1{
-  font-size:calc(var(--fs-h2) + 4px);   /* 웹만 +4 */ font-weight:800; line-height:1.35; letter-spacing:-0.01em; color:var(--c-ink);
+  font-size:calc(var(--fs-h2) + 4px);   /* 웹만 +4 */ font-weight:900; line-height:1.35; letter-spacing:-0.01em; color:var(--c-ink);
 }
 .contents_div .ucp-h1 em{ color:var(--c-sky); }
 .contents_div .ucp-bubble{
@@ -220,7 +220,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 }
 .contents_div .ucp-stamp-ico{                               /* 펭귄 얼굴: 배지 뒤, 하단 10% 가려짐 */
   position:absolute; left:50%; bottom:100%; z-index:0;
-  width:85.31px; height:85.31px; max-width:none; object-fit:contain;   /* 52 × 1.4 × 1.2 × 1.05 × 0.93 */
+  width:93.84px; height:93.84px; max-width:none; object-fit:contain;   /* 52 × 1.4 × 1.2 × 1.05 × 0.93 × 1.1 */
   transform:translate(-50%, calc(10% + 27.5px));   /* 기존 대비 10px 아래 */
 }
 .contents_div .ucp-profile{ background:#fff; border-radius:20px; overflow:hidden; border:1px solid var(--c-line); }
@@ -435,7 +435,11 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   .contents_div .ucp-br--mo-wide{ display:inline; }
 
   .contents_div .ucp-h2,
-  .contents_div .ucp-h1{ font-size:calc(var(--fs-h2) + 3px); line-height:1.4; }   /* 모바일 +3 */
+  .contents_div .ucp-h1{ font-size:calc(var(--fs-h2) + 3px); line-height:1.35; }   /* 모바일 +3, 행간 1.4→1.35 */
+  .contents_div #ucp-sec4 .ucp-h2{ font-size:calc((var(--fs-h2) + 3px) * 1.08); }   /* 04 타이틀 모바일 1.08배 (아이콘은 em 단위라 함께 커짐) */
+  .contents_div .ucp-h2-ico,
+  .contents_div .ucp-h2-ico img{ width:2.178em; }   /* 04 얼굴 아이콘 모바일 2.178em (1.65 × 1.2 × 1.1) */
+  .contents_div .ucp-h2-ico img{ height:2.178em; transform:translate(-2px, calc(-58% + 2px)); }   /* 모바일 위치: 왼쪽 2px, 아래 2px */
   .contents_div .ucp-h3{ line-height:1.5; }
   .contents_div .ucp-nav-btn{ line-height:1.35; }
   .contents_div .ucp-nav-btn.is-on::after{ width:56%; height:2px; }
@@ -470,7 +474,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   .contents_div .ucp-profile .ucp-pf dd{ font-size:calc(var(--fs-info) + .5px); }   /* 프로필만 +0.5 */
   .contents_div .ucp-stamp-wrap{ margin-left:4px; transform:rotate(-6deg) translateY(6.5px); }
   .contents_div .ucp-stamp{ padding:4px 8px 2px; border-width:2px; border-radius:7px; }
-  .contents_div .ucp-stamp-ico{ width:59.06px; height:59.06px; transform:translate(-50%, calc(10% + 19.5px)); }   /* 63.5 × 0.93 */
+  .contents_div .ucp-stamp-ico{ width:64.97px; height:64.97px; transform:translate(-50%, calc(10% + 19.5px)); }   /* 63.5 × 0.93 × 1.1 */
 
   .contents_div .ucp-stats{ grid-template-columns:1fr; }
   .contents_div .ucp-stats li{ flex-direction:row; justify-content:space-between; align-items:center; padding:14px 2px; text-align:left; }
@@ -480,6 +484,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 
   .contents_div .ucp-sec{ padding-top:calc(var(--band) + 10px); padding-bottom:calc(var(--band) + 3px); }   /* 모바일 섹션 상 +10, 하 +3 */
   .contents_div #ucp-sec3{ padding-bottom:calc(var(--band) + 13px); }
+  .contents_div #ucp-sec3 .ucp-sec-bg{ transform:scale(1.2); }   /* 배경 1.2배, 가운데 기준 (섹션 overflow:hidden으로 잘림) */
   .contents_div .ucp-promise li{ padding:13.5px 12px 14.5px 37px; text-wrap:pretty; }   /* 텍스트만 0.5 위로 (체크 위치 그대로) */   /* 줄 끝까지 채우고, 마지막 줄에 한 단어만 남지 않게 */
   .contents_div .ucp-promise li::before{ left:12px; top:calc(14px + (1.6em - 14.5px) / 2); width:14.5px; height:14.5px; }
   .contents_div .ucp-etq-box{ grid-template-columns:1fr; padding:var(--card-py) var(--card-px) calc(var(--card-py) - 1px); border-radius:14px; }   /* 하단 +7 */
@@ -493,9 +498,9 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   .contents_div .ucp-cta{ display:flex; width:100%; min-height:58px; padding:0 18px; }
   .contents_div .ucp-cta-wrap{ padding-bottom:var(--card-py); }
 
-  .contents_div .ucp-foot-title{ padding-bottom:12px; font-size:calc(var(--fs-foot) - 1.5px); line-height:1.42; }   /* 모바일 -1.5 */
+  .contents_div .ucp-foot-title{ padding-bottom:12px; font-size:calc(var(--fs-foot) - 1.5px); font-weight:600; line-height:1.42; }   /* 모바일 -1.5, 굵기 600 */
   .contents_div .ucp-tags{ gap:4px 12px; }
-  .contents_div .ucp-tags li{ height:auto; padding:0; border:0; border-radius:0; font-weight:400; }
+  .contents_div .ucp-tags li{ height:auto; padding:0; border:0; border-radius:0; font-weight:400; opacity:.7; }   /* 모바일 태그 글자 연하게 */
 }
 @media (max-width:480px){
   .contents_div .ucp-wrap{
