@@ -243,9 +243,9 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 .contents_div .ucp-pf dd strong{ color:var(--c-ink); font-weight:700; }
 .contents_div .ucp-pf-box{ position:relative; }
 .contents_div .ucp-love{                                    /* 스티커 이미지 175×175 (800 기준), 원본 350×350 */
-  position:absolute; right:28px; top:50%; z-index:2;
+  position:absolute; right:31px; top:50%; z-index:2;   /* 웹 왼쪽으로 이동 (25 → 31) */
   width:clamp(126px, calc(126px + (100cqi - 569px) * 0.2121), 175px); max-width:none; height:auto; aspect-ratio:1/1;
-  object-fit:contain; transform:translateY(calc(-50% + 39.5px)); pointer-events:none; user-select:none;
+  object-fit:contain; transform:translateY(calc(-50% + 36.5px)); pointer-events:none; user-select:none;   /* 웹 위로 3px */
 }
 
 /* ===== 02 마음 아픈 사정 ===== */
@@ -335,14 +335,14 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 }
 .contents_div .ucp-map-pin{
   position:absolute; left:var(--x); top:var(--y); z-index:1;
-  width:max(27px, 3.9cqi);   /* 1.5배 */ transform:translate(-50%,-100%);
+  width:calc(max(27px, 3.9cqi) * 1.18);   /* 1.5배, 통통한 핀(높이 유지·폭 1.18배) */ transform:translate(-50%,-100%);
   filter:drop-shadow(0 2px 2px rgba(0,0,0,.22));
 }
 .contents_div .ucp-map-pin svg{ display:block; width:100%; height:auto; }
 .contents_div .ucp-map-me{                                 /* 위치 표시 아래 이름 (웹·모바일) */
   display:block; position:absolute; left:var(--x); top:var(--y); z-index:2;
   transform:translate(-50%, .36em); padding:.27em .73em .18em; border-radius:999px;
-  background:var(--c-sky); color:#fff; font-size:max(11px, 1.6cqi); font-weight:800; line-height:1.3; white-space:nowrap;
+  background:#1259bb; color:#fff; font-size:max(11px, 1.6cqi);   /* 핀과 같은 진한 블루 */ font-weight:800; line-height:1.3; white-space:nowrap;
   box-shadow:0 1px 3px rgba(0,0,0,.25); pointer-events:none;
 }
 .contents_div .ucp-info-in{ padding:var(--card-py) var(--card-px) 0; }
@@ -392,7 +392,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 .contents_div .ucp-foot{ background:#225c96; text-align:center; }   /* CTA 버튼과 같은 색 */
 .contents_div .ucp-foot-title{
   padding-bottom:18px;   /* 텍스트 하단 여백 */
-  font-size:var(--fs-foot); font-weight:800; line-height:1.4; letter-spacing:-0.01em; color:#fff;
+  font-size:var(--fs-foot); font-weight:600; line-height:1.4; letter-spacing:-0.01em; color:#fff;
 }
 .contents_div .ucp-foot-title em{ color:var(--c-lemon); }
 .contents_div .ucp-tags{
@@ -644,7 +644,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
             <li class="ucp-map-sub" style="--x:61.73%;--y:96.41%">짝꿍놀이터</li>
             </ul>
             <span class="ucp-map-scale" aria-hidden="true"><i></i>30m</span>
-            <span class="ucp-map-pin" aria-hidden="true" style="--x:36.66%;--y:45.6%"><svg viewBox="0 0 24 34"><path d="M12 33C12 33 1 19.5 1 12a11 11 0 0 1 22 0c0 7.5-11 21-11 21z" fill="#478bca"/><circle cx="12" cy="12" r="4.4" fill="#fff"/></svg></span>
+            <span class="ucp-map-pin" aria-hidden="true" style="--x:36.66%;--y:45.6%"><svg viewBox="0 0 30 36"><path d="M15 35C11 30.5 2 22 2 14a13 13 0 0 1 26 0c0 8-9 16.5-13 21z" fill="#1259bb"/><circle cx="15" cy="14" r="5.6" fill="#fff"/></svg></span>
             <span class="ucp-map-me" aria-hidden="true" style="--x:36.66%;--y:45.6%">우치동물원</span>
           </div>
         </div>
