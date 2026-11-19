@@ -53,7 +53,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   --band:clamp(40px, calc(7.9% + 6.8px), 70px);
   --card-py:30px; --card-px:28px;
   --kick:32px; --lb-h:24px; --lb-px:11px;
-  --img-ratio:62.5%; --map-vis:75.57%;   /* 지도 보이는 폭 = 칸 비율 ÷ 지도 원본 비율 */
+  --img-ratio:62.5%; --map-vis:100%;   /* 지도 보이는 폭 = 칸 비율 ÷ 지도 원본 비율 (최대 100%) */
   --nav-h:70px;
   --gap-head:32px;   /* 타이틀 묶음 ↔ 본문 */
   --gap-blk:28px;    /* 본문 블록 사이 */
@@ -312,42 +312,42 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 .contents_div #ucp-sec4 .ucp-h2{ color:#235a92; }   /* 03 타이틀과 같은 푸른 톤 */
 .contents_div .ucp-info{ background:#fff; border-radius:20px; border:2px solid #b5d8f4; overflow:hidden; }   /* 파스텔 블루 보더 */
 .contents_div .ucp-info-map{ border-bottom:1px solid var(--c-line); }   /* 지도: 상하좌우 여백 없이, 아래 100% 실선 */
-.contents_div .ucp-map-in{                                  /* 지도 원본 비율(1825×862) 레이어 — cover처럼 높이 채우고 가운데 기준 */
-  position:absolute; top:0; left:50%; height:100%; aspect-ratio:1825/862;
-  transform:translateX(-50%); container-type:inline-size;
+.contents_div .ucp-map-in{                                  /* 지도 원본 비율(1572×1001) 레이어 — cover처럼 칸을 채우고 가운데 기준 */
+  position:absolute; top:50%; left:50%; width:max(100%, calc(var(--img-ratio) * 1572 / 1001)); aspect-ratio:1572/1001;
+  transform:translate(-50%,-50%); container-type:inline-size;
 }
 .contents_div .ucp-map-lbs li{
   position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%);
-  font-size:max(10px, 1.37cqi); font-weight:600; line-height:1.2; letter-spacing:-0.02em;
+  font-size:max(10px, 1.7cqi); font-weight:600; line-height:1.2; letter-spacing:-0.02em;
   color:#555; text-align:center; white-space:nowrap; pointer-events:none;
   text-shadow:0 0 2px #fff, 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
 }
 .contents_div .ucp-map-ico{                                 /* 장소 아이콘: 이름 위에 */
   position:absolute; left:50%; bottom:100%; margin-bottom:3px;
-  width:max(14px, 1.75cqi); transform:translateX(-50%);
+  width:max(14px, 2.2cqi); transform:translateX(-50%);
   filter:drop-shadow(0 0 1.5px #fff);
 }
 .contents_div .ucp-map-ico svg{ display:block; width:100%; height:auto; }
-.contents_div .ucp-map-scale{                               /* 축척: 보이는 영역 좌측 하단, 막대 길이는 원본 지도 기준 30m */
-  position:absolute; bottom:max(10px, 1.6cqi); left:calc((100% - var(--map-vis)) / 2 + max(12px, 1.8cqi));
-  display:flex; align-items:flex-end; gap:max(4px, .5cqi);
-  font-size:max(10px, 1.1cqi); font-weight:700; line-height:1; color:#333;
+.contents_div .ucp-map-scale{                               /* 축척: 보이는 영역 좌측 하단, 막대 길이는 원본 지도 기준 50m */
+  position:absolute; bottom:max(10px, 2.1cqi); left:calc((100% - var(--map-vis)) / 2 + max(12px, 2.4cqi));
+  display:flex; align-items:flex-end; gap:max(4px, .65cqi);
+  font-size:max(10px, 1.45cqi); font-weight:700; line-height:1; color:#333;
   text-shadow:0 0 2px #fff, 0 0 2px #fff;
 }
 .contents_div .ucp-map-scale i{
-  display:block; width:5.93cqi; height:max(5px, .6cqi);
+  display:block; width:4.6cqi; height:max(5px, .8cqi);
   border:solid #333; border-width:0 1.5px 1.5px; box-shadow:0 1px 0 rgba(255,255,255,.7);
 }
 .contents_div .ucp-map-pin{
   position:absolute; left:var(--x); top:var(--y); z-index:1;
-  width:calc(max(27px, 3.9cqi) * 1.18);   /* 1.5배, 통통한 핀(높이 유지·폭 1.18배) */ transform:translate(-50%,-100%);
+  width:calc(max(27px, 5cqi) * 1.18);   /* 1.5배, 통통한 핀(높이 유지·폭 1.18배) */ transform:translate(-50%,-100%);
   filter:drop-shadow(0 2px 2px rgba(0,0,0,.22));
 }
 .contents_div .ucp-map-pin svg{ display:block; width:100%; height:auto; }
 .contents_div .ucp-map-me{                                 /* 위치 표시 아래 이름 (웹·모바일) */
   display:block; position:absolute; left:var(--x); top:var(--y); z-index:2;
   transform:translate(-50%, .36em); padding:.27em .73em .18em; border-radius:999px;
-  background:#1259bb; color:#fff; font-size:max(11px, 1.6cqi);   /* 핀과 같은 진한 블루 */ font-weight:800; line-height:1.3; white-space:nowrap;
+  background:#1259bb; color:#fff; font-size:max(11px, 2.1cqi);   /* 핀과 같은 진한 블루 */ font-weight:800; line-height:1.3; white-space:nowrap;
   box-shadow:0 1px 3px rgba(0,0,0,.25); pointer-events:none;
 }
 .contents_div .ucp-info-in{ padding:var(--card-py) var(--card-px) 0; }
@@ -421,7 +421,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 .contents_div .ucp-ht--dot { --in:ucpBub .7s cubic-bezier(.3,1.6,.4,1) .95s;  --loop:ucpBob 3.2s ease-in-out 1.7s infinite alternate; }
 .contents_div .ucp-ht--star{ --in:ucpSpin .8s cubic-bezier(.3,1.5,.4,1) 1.05s; --loop:ucpTwinkle 4.4s ease-in-out 1.85s infinite; }
 .contents_div .ucp-ht--fish{ --in:ucpSwimIn .9s cubic-bezier(.22,1.2,.36,1) 1.15s; --loop:ucpSwim 3.6s ease-in-out 2.1s infinite alternate; }
-.contents_div .ucp-ht--peng{ --in:ucpJump .9s cubic-bezier(.3,1.5,.45,1) .95s; --loop:ucpWave 3.2s ease-in-out 1.85s infinite; }
+.contents_div .ucp-ht--peng{ --in:ucpJump .9s cubic-bezier(.3,1.5,.45,1) .95s; --loop:ucpWave 3.2s linear 1.85s infinite; }
 @keyframes ucpDrop{ from{ opacity:0; transform:translateY(-2%); } to{ opacity:1; transform:none; } }
 @keyframes ucpRise{ from{ opacity:0; transform:translateY(4%); } to{ opacity:1; transform:none; } }
 @keyframes ucpPop{ 0%{ opacity:0; transform:scale(.6); } 50%{ opacity:1; } 100%{ opacity:1; transform:none; } }
@@ -430,9 +430,9 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 @keyframes ucpSwimIn{ from{ opacity:0; transform:translateX(6%); } to{ opacity:1; transform:none; } }
 @keyframes ucpJump{ 0%{ opacity:0; transform:translateY(12%); } 60%{ opacity:1; } 100%{ opacity:1; transform:none; } }
 @keyframes ucpBob{ from{ opacity:1; transform:translateY(0); } to{ opacity:1; transform:translateY(-1.6%); } }
-@keyframes ucpTwinkle{ 0%, 100%{ opacity:1; transform:rotate(0deg) scale(1); } 25%{ opacity:1; transform:rotate(-10deg) scale(1); } 75%{ opacity:1; transform:rotate(12deg) scale(1.12); } }
+@keyframes ucpTwinkle{ 0%{ opacity:1; transform:rotate(0deg) scale(1); animation-timing-function:cubic-bezier(.61,1,.88,1); } 25%{ opacity:1; transform:rotate(-10deg) scale(1); animation-timing-function:cubic-bezier(.12,0,.39,0); } 50%{ opacity:1; transform:rotate(0deg) scale(1); animation-timing-function:cubic-bezier(.61,1,.88,1); } 75%{ opacity:1; transform:rotate(12deg) scale(1.12); animation-timing-function:cubic-bezier(.12,0,.39,0); } 100%{ opacity:1; transform:rotate(0deg) scale(1); } }
 @keyframes ucpSwim{ 0%{ opacity:1; transform:translate(0,0) rotate(0); } 50%{ opacity:1; transform:translate(-1.2%,-.8%) rotate(-5deg); } 100%{ opacity:1; transform:translate(-2.2%,.3%) rotate(3deg); } }
-@keyframes ucpWave{ 0%, 100%{ opacity:1; transform:rotate(0deg); } 25%{ opacity:1; transform:rotate(-4deg); } 75%{ opacity:1; transform:rotate(4deg); } }   /* 0도에서 시작·끝 → 등장 직후 튐 없음 */
+@keyframes ucpWave{ 0%{ opacity:1; transform:rotate(0deg); animation-timing-function:cubic-bezier(.61,1,.88,1); } 25%{ opacity:1; transform:rotate(-4deg); animation-timing-function:cubic-bezier(.12,0,.39,0); } 50%{ opacity:1; transform:rotate(0deg); animation-timing-function:cubic-bezier(.61,1,.88,1); } 75%{ opacity:1; transform:rotate(4deg); animation-timing-function:cubic-bezier(.12,0,.39,0); } 100%{ opacity:1; transform:rotate(0deg); } }   /* 0도에서 시작·끝, 끝에서만 느려짐 (가운데 멈칫 없음) */
 .contents_div .ucp-js .ucp-hero-photo img{                 /* 처음엔 흐리고 확대된 상태로 보임 */
   opacity:.55; filter:blur(10px); transform:scale(1.06); transform-origin:50% 45%;
 }
@@ -462,13 +462,13 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 .contents_div .ucp-bf--m{ --bd:.15s; --bl:ucpBfHello 2.4s ease-in-out; }     /* 손 흔드는 아이: 통통 */
 .contents_div .ucp-bf--r{ --bd:.3s;  --bl:ucpBfSway 3.2s ease-in-out; }      /* 뒷모습: 엉덩이 살랑 */
 @keyframes ucpBfIn{ 0%{ opacity:0; transform:translateY(4%) scale(.85); } 100%{ opacity:1; transform:none; } }
-@keyframes ucpBfWaddle{ 0%, 100%{ opacity:1; transform:rotate(0deg); } 25%{ opacity:1; transform:rotate(-1deg); } 75%{ opacity:1; transform:rotate(1deg); } }
+@keyframes ucpBfWaddle{ 0%{ opacity:1; transform:rotate(0deg); animation-timing-function:cubic-bezier(.61,1,.88,1); } 25%{ opacity:1; transform:rotate(-1deg); animation-timing-function:cubic-bezier(.12,0,.39,0); } 50%{ opacity:1; transform:rotate(0deg); animation-timing-function:cubic-bezier(.61,1,.88,1); } 75%{ opacity:1; transform:rotate(1deg); animation-timing-function:cubic-bezier(.12,0,.39,0); } 100%{ opacity:1; transform:rotate(0deg); } }
 @keyframes ucpBfHello{
   0%, 55%, 100%{ opacity:1; transform:translateY(0) rotate(0deg); }
   15%{ opacity:1; transform:translateY(-2%) rotate(1.2deg); } 27%{ opacity:1; transform:translateY(0) rotate(0deg); }
   39%{ opacity:1; transform:translateY(-1.2%) rotate(-.8deg); }
 }
-@keyframes ucpBfSway{ 0%, 100%{ opacity:1; transform:rotate(0deg) scale(1); } 25%{ opacity:1; transform:rotate(1.5deg) scale(1.01); } 75%{ opacity:1; transform:rotate(-1.5deg) scale(1.01); } }
+@keyframes ucpBfSway{ 0%{ opacity:1; transform:rotate(0deg) scale(1); animation-timing-function:cubic-bezier(.61,1,.88,1); } 25%{ opacity:1; transform:rotate(1.5deg) scale(1.01); animation-timing-function:cubic-bezier(.12,0,.39,0); } 50%{ opacity:1; transform:rotate(0deg) scale(1); animation-timing-function:cubic-bezier(.61,1,.88,1); } 75%{ opacity:1; transform:rotate(-1.5deg) scale(1.01); animation-timing-function:cubic-bezier(.12,0,.39,0); } 100%{ opacity:1; transform:rotate(0deg) scale(1); } }
 
 /* 스티커·포인트 요소 — 크기·각도는 개별 속성(scale·rotate·translate)으로 움직여 기존 transform 위치를 건드리지 않음 */
 .contents_div .ucp-js .ucp-stamp-wrap,
@@ -482,7 +482,8 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   animation:ucpSlide .9s cubic-bezier(.22,.7,.3,1) calc(var(--rv-d, 0s) + .55s) forwards, ucpLoveFloat 3.2s ease-in-out calc(var(--rv-d, 0s) + 1.45s) infinite;   /* 배로 미끄러져 들어와 멈춤 → 둥둥 */
 }
 .contents_div .ucp-js .ucp-h2.is-in .ucp-h2-ico img{          /* 04 얼굴 아이콘: 뿅 나타나 갸웃갸웃 */
-  animation:ucpPeekIn .6s cubic-bezier(.3,1.6,.45,1) calc(var(--rv-d, 0s) + .4s) forwards, ucpTilt 5s ease-in-out calc(var(--rv-d, 0s) + 1s) infinite;
+  transform-origin:50% 40%;   /* 위로 올려 둔 위치 기준 얼굴 아래쪽 = 회전 축 */
+  animation:ucpPeekIn .6s cubic-bezier(.3,1.6,.45,1) calc(var(--rv-d, 0s) + .4s) forwards, ucpTilt 5s linear calc(var(--rv-d, 0s) + 1s) infinite;   /* 등장 끝 0도에서 시작, 끝에서만 느려지고 가운데는 멈춤 없이 통과 */
 }
 .contents_div .ucp-map-pin{ transform-origin:0 0; }          /* 기준점 = 핀 끝 (transform 이동 전 좌표) */
 .contents_div .ucp-js .ucp-info.is-in .ucp-map-pin{           /* 지도 핀: 뿅뿅 – 쉬고 – 뿅뿅 */
@@ -493,7 +494,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 @keyframes ucpPeekIn{ 0%{ opacity:0; scale:.4; translate:0 30%; } 100%{ opacity:1; scale:1; translate:0 0; } }
 @keyframes ucpLoveFloat{ 0%, 100%{ opacity:1; translate:0 0; } 50%{ opacity:1; translate:0 -3%; } }
 @keyframes ucpSlide{ 0%{ opacity:0; translate:45% 0; rotate:4deg; } 30%{ opacity:1; } 100%{ opacity:1; translate:0 0; rotate:0deg; } }
-@keyframes ucpTilt{ 0%, 100%{ opacity:1; rotate:0deg; } 25%{ opacity:1; rotate:-7deg; } 75%{ opacity:1; rotate:7deg; } }
+@keyframes ucpTilt{ 0%{ rotate:0deg; animation-timing-function:cubic-bezier(.61,1,.88,1); } 25%{ rotate:7deg; animation-timing-function:cubic-bezier(.12,0,.39,0); } 50%{ rotate:0deg; animation-timing-function:cubic-bezier(.61,1,.88,1); } 75%{ rotate:-7deg; animation-timing-function:cubic-bezier(.12,0,.39,0); } 100%{ rotate:0deg; } }
 @keyframes ucpHop{                                          /* 높이·찌그러짐 모두 이전의 절반 */
   0%{ translate:0 0; scale:1; }
   8%{ translate:0 -17%; scale:.975 1.03; }
@@ -525,7 +526,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
     --gut:22px;
     --card-py:22px; --card-px:17px;
     --kick:22px; --lb-h:21px; --lb-px:9px;
-    --img-ratio:75%; --map-vis:62.98%;
+    --img-ratio:75%; --map-vis:84.9%;
     --nav-h:48px;
     --gap-head:24px; --gap-blk:22px;
   }
@@ -738,30 +739,23 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
           <div class="ucp-map-in">
             <img src="img/지도.webp" alt="광주 북구 우치로 677 우치동물원 위치 지도" loading="lazy" decoding="async">
             <ul class="ucp-map-lbs" aria-hidden="true">
-            <li style="--x:51.06%;--y:7.54%">시계탑</li>
-            <li style="--x:67.74%;--y:19.75%">의무실</li>
-            <li class="ucp-map-up" style="--x:36.83%;--y:31.78%">전기차충전소</li>
-            <li style="--x:54.7%;--y:31.78%">이마트24</li>
-            <li class="ucp-map-sub" style="--x:62.07%;--y:35.55%">토토로분식</li>
-            <li class="ucp-map-sub" style="--x:78.75%;--y:33.39%">광주랜드<br>자이로드롭</li>
-            <li class="ucp-map-sub" style="--x:80.02%;--y:40.75%">무지개극장</li>
-            <li style="--x:72.14%;--y:45.6%">회전목마</li>
-            <li class="ucp-map-sub" style="--x:81.12%;--y:47.4%">바이킹</li>
-            <li style="--x:48.86%;--y:53.86%">씽씽보트</li>
-            <li class="ucp-map-sub" style="--x:70.28%;--y:51.53%">꼬마비행기</li>
-            <li style="--x:66.81%;--y:64.99%">개구리점프</li>
-            <li class="ucp-map-sub" style="--x:76.63%;--y:66.25%">드롭탑</li>
-            <li style="--x:55.12%;--y:66.79%">타가디스코</li>
-            <li class="ucp-map-sub" style="--x:74.09%;--y:71.81%">미니셔틀</li>
-            <li style="--x:69.94%;--y:78.99%">스타워즈</li>
-            <li style="--x:38.1%;--y:83.12%"><span class="ucp-map-ico"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5e9c4f"/><path d="M10 3.6 5.6 10h2.3l-2.9 4h4.1v2.6h1.8V14H15l-2.9-4h2.3z" fill="#fff"/></svg></span>우치공원</li>
-            <li class="ucp-map-sub" style="--x:68.93%;--y:94.08%">카오스</li>
-            <li class="ucp-map-sub" style="--x:77.05%;--y:93.36%">야외공연장</li>
-            <li class="ucp-map-sub" style="--x:61.73%;--y:96.41%">짝꿍놀이터</li>
+            <li style="--x:52.67%;--y:16.68%">롤러스케이트장</li>
+            <li class="ucp-map-sub" style="--x:66.28%;--y:19.28%">드롭탑</li>
+            <li style="--x:22.58%;--y:26.97%"><span class="ucp-map-ico"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5e9c4f"/><path d="M10 3.6 5.6 10h2.3l-2.9 4h4.1v2.6h1.8V14H15l-2.9-4h2.3z" fill="#fff"/></svg></span>파충류관&amp;<br>식물원</li>
+            <li style="--x:74.81%;--y:28.37%">패밀리열차</li>
+            <li class="ucp-map-sub" style="--x:64.5%;--y:32.97%">이마트24</li>
+            <li class="ucp-map-sub" style="--x:81.62%;--y:37.66%">날으는그네</li>
+            <li style="--x:57.76%;--y:38.06%"><span class="ucp-map-ico"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5e9c4f"/><path d="M10 3.6 5.6 10h2.3l-2.9 4h4.1v2.6h1.8V14H15l-2.9-4h2.3z" fill="#fff"/></svg></span>우치공원</li>
+            <li class="ucp-map-sub" style="--x:72.71%;--y:42.16%">패밀리목마</li>
+            <li class="ucp-map-sub" style="--x:64.44%;--y:42.46%">씽씽보트</li>
+            <li style="--x:79.07%;--y:47.75%">광주<br>패밀리랜드</li>
+            <li class="ucp-map-sub" style="--x:70.17%;--y:49.85%">개구리점프</li>
+            <li style="--x:84.61%;--y:59.44%">슈퍼스크린</li>
+            <li class="ucp-map-sub" style="--x:74.3%;--y:62.04%">야외공연장</li>
             </ul>
-            <span class="ucp-map-scale" aria-hidden="true"><i></i>30m</span>
-            <span class="ucp-map-pin" aria-hidden="true" style="--x:36.66%;--y:45.6%"><svg viewBox="0 0 30 36"><path d="M15 35C11 30.5 2 22 2 14a13 13 0 0 1 26 0c0 8-9 16.5-13 21z" fill="#1259bb"/><circle cx="15" cy="14" r="5.6" fill="#fff"/></svg></span>
-            <span class="ucp-map-me" aria-hidden="true" style="--x:36.66%;--y:45.6%">우치동물원</span>
+            <span class="ucp-map-scale" aria-hidden="true"><i></i>50m</span>
+            <span class="ucp-map-pin" aria-hidden="true" style="--x:23.85%;--y:60.44%"><svg viewBox="0 0 30 36"><path d="M15 35C11 30.5 2 22 2 14a13 13 0 0 1 26 0c0 8-9 16.5-13 21z" fill="#1259bb"/><circle cx="15" cy="14" r="5.6" fill="#fff"/></svg></span>
+            <span class="ucp-map-me" aria-hidden="true" style="--x:23.85%;--y:60.44%">우치동물원</span>
           </div>
         </div>
         <div class="ucp-info-in">
