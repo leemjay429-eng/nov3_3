@@ -107,7 +107,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   position:relative; display:inline-block; width:2.087em; height:.7em; margin-right:.12em; vertical-align:baseline;
 }
 .contents_div .ucp-h2-ico img{
-  position:absolute; left:0; top:50%; width:2.087em; height:2.087em; max-width:none; object-fit:contain; transform:translateY(calc(-58% + 4px));   /* 웹 4px 아래로 */
+  position:absolute; left:0; top:50%; width:2.087em; height:2.087em; max-width:none; object-fit:contain; transform:translate(-2px, calc(-58% + 4px));   /* 웹 4px 아래로, 왼쪽 2px */
 }
 .contents_div .ucp-h3{
   font-size:var(--fs-h3); font-weight:700; line-height:1.45; color:var(--c-ink);
@@ -122,7 +122,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/180px 180px repeat;
   mix-blend-mode:overlay; opacity:.42;
 }
-.contents_div .ucp-hero-photo{ position:relative; width:100%; background:#eee; }
+.contents_div .ucp-hero-photo{ position:relative; width:100%; background:#488aca; overflow:hidden; }
 .contents_div .ucp-hero-photo::before{ content:''; display:block; padding-top:72.125%; }  /* 800×577 (원본 1600×1154) */
 .contents_div .ucp-hero-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
 .contents_div .ucp-hero-fade{                                                  /* 사진 위 블루 그라데이션 57px(800 기준) */
@@ -138,8 +138,12 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 }
 .contents_div .ucp-hero-txt{                                                   /* 800×625 (원본 1600×1250) */
   position:absolute; top:0; left:0; z-index:2;
-  width:100%; max-width:none; height:auto; aspect-ratio:1600/1250;
+  width:100%; aspect-ratio:1600/1250;
   pointer-events:none; user-select:none;
+}
+.contents_div .ucp-ht{                                       /* 원본 한 장을 겹쳐 두고 요소별로 클리핑 */
+  position:absolute; inset:0; width:100%; height:100%; max-width:none;
+  -webkit-clip-path:var(--ci); clip-path:var(--ci); transform-origin:var(--o);
 }
 .contents_div .ucp-fig{ position:relative; width:100%; overflow:hidden; background:#eee; }
 .contents_div .ucp-fig::before{ content:''; display:block; padding-top:var(--img-ratio); }
@@ -192,6 +196,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 }
 .contents_div .ucp-bubble-fig::before{ content:''; display:block; padding-top:37.143%; }   /* 560×208 */
 .contents_div .ucp-bubble-fig img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.contents_div .ucp-bf{ -webkit-clip-path:var(--ci); clip-path:var(--ci); transform-origin:var(--o); }   /* 원본 한 장을 겹쳐 펭귄별로 클리핑 (기준점 = 발) */
 .contents_div .ucp-bubble p{ font-size:var(--fs-lead); font-weight:600; line-height:1.6; color:var(--c-ink); }
 .contents_div .ucp-catch{
   margin-top:var(--gap-blk);
@@ -405,6 +410,100 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   font-size:var(--fs-hash); font-weight:700; line-height:1.35; color:#fff;
 }
 
+/* ===== 모션 (JS가 .ucp-js를 붙였을 때만, 동작 줄이기 설정 시 없음) ===== */
+.contents_div .ucp-js .ucp-ht{ opacity:0; }
+.contents_div .ucp-js .ucp-hero-txt.is-in .ucp-ht{ animation:var(--in) forwards, var(--loop, none); }
+/* 등장 → 반복 (각 요소 따로) */
+.contents_div .ucp-ht--eb  { --in:ucpDrop .8s ease-out 0s; }
+.contents_div .ucp-ht--l1  { --in:ucpRise .8s cubic-bezier(.22,1.3,.36,1) .25s; }
+.contents_div .ucp-ht--l2  { --in:ucpPop .9s cubic-bezier(.22,1.45,.36,1) .45s; }
+.contents_div .ucp-ht--l3  { --in:ucpRise .8s cubic-bezier(.22,1.3,.36,1) .65s; }
+.contents_div .ucp-ht--dot { --in:ucpBub .7s cubic-bezier(.3,1.6,.4,1) .95s;  --loop:ucpBob 3.2s ease-in-out 1.7s infinite alternate; }
+.contents_div .ucp-ht--star{ --in:ucpSpin .8s cubic-bezier(.3,1.5,.4,1) 1.05s; --loop:ucpTwinkle 4.4s ease-in-out 1.85s infinite; }
+.contents_div .ucp-ht--fish{ --in:ucpSwimIn .9s cubic-bezier(.22,1.2,.36,1) 1.15s; --loop:ucpSwim 3.6s ease-in-out 2.1s infinite alternate; }
+.contents_div .ucp-ht--peng{ --in:ucpJump .9s cubic-bezier(.3,1.5,.45,1) .95s; --loop:ucpWave 3.2s ease-in-out 1.85s infinite; }
+@keyframes ucpDrop{ from{ opacity:0; transform:translateY(-2%); } to{ opacity:1; transform:none; } }
+@keyframes ucpRise{ from{ opacity:0; transform:translateY(4%); } to{ opacity:1; transform:none; } }
+@keyframes ucpPop{ 0%{ opacity:0; transform:scale(.6); } 50%{ opacity:1; } 100%{ opacity:1; transform:none; } }
+@keyframes ucpBub{ from{ opacity:0; transform:translateY(3%) scale(0); } to{ opacity:1; transform:none; } }
+@keyframes ucpSpin{ from{ opacity:0; transform:rotate(-180deg) scale(0); } to{ opacity:1; transform:none; } }
+@keyframes ucpSwimIn{ from{ opacity:0; transform:translateX(6%); } to{ opacity:1; transform:none; } }
+@keyframes ucpJump{ 0%{ opacity:0; transform:translateY(12%); } 60%{ opacity:1; } 100%{ opacity:1; transform:none; } }
+@keyframes ucpBob{ from{ opacity:1; transform:translateY(0); } to{ opacity:1; transform:translateY(-1.6%); } }
+@keyframes ucpTwinkle{ 0%, 100%{ opacity:1; transform:rotate(0deg) scale(1); } 25%{ opacity:1; transform:rotate(-10deg) scale(1); } 75%{ opacity:1; transform:rotate(12deg) scale(1.12); } }
+@keyframes ucpSwim{ 0%{ opacity:1; transform:translate(0,0) rotate(0); } 50%{ opacity:1; transform:translate(-1.2%,-.8%) rotate(-5deg); } 100%{ opacity:1; transform:translate(-2.2%,.3%) rotate(3deg); } }
+@keyframes ucpWave{ 0%, 100%{ opacity:1; transform:rotate(0deg); } 25%{ opacity:1; transform:rotate(-4deg); } 75%{ opacity:1; transform:rotate(4deg); } }   /* 0도에서 시작·끝 → 등장 직후 튐 없음 */
+.contents_div .ucp-js .ucp-hero-photo img{                 /* 처음엔 흐리고 확대된 상태로 보임 */
+  opacity:.55; filter:blur(10px); transform:scale(1.06); transform-origin:50% 45%;
+}
+.contents_div .ucp-js .ucp-hero-photo.is-in img{
+  animation:ucpPhotoIn .55s cubic-bezier(.25,.18,.6,.4) forwards, ucpPhotoBreath 7s ease-in-out .55s infinite alternate;
+}
+@keyframes ucpPhotoIn{                                       /* 블러가 걷히며 본래 크기로 */
+  0%{ opacity:.55; filter:blur(10px); transform:scale(1.06); }
+  100%{ opacity:1; filter:blur(0); transform:scale(1); }
+}
+@keyframes ucpPhotoBreath{                                  /* 물속처럼 은은하게 커졌다 작아졌다 */
+  from{ opacity:1; filter:blur(0); transform:scale(1); }
+  to{ opacity:1; filter:blur(0); transform:scale(1.015); }
+}
+.contents_div .ucp-js .ucp-rv{                              /* 내비 아래 스크롤 등장: 화면에 들어온 순서대로 한 박자씩 */
+  transition:opacity .7s ease, transform .7s cubic-bezier(.22,.8,.3,1);
+  transition-delay:var(--rv-d, 0s);
+}
+.contents_div .ucp-js .ucp-rv:not(.is-in){ opacity:0; transform:translateY(28px); }
+.contents_div .ucp-js .ucp-rv--fade:not(.is-in){ transform:none; }   /* 프로필 행: 스티커 위치 기준이 바뀌지 않게 페이드만 */
+
+/* 인트로 펭귄 3마리: 하나씩 뿅 → 각자 반복 (모든 반복은 0에서 시작·끝) */
+.contents_div .ucp-js .ucp-bubble-fig.ucp-rv:not(.is-in){ opacity:1; transform:none; }   /* 묶음은 그대로, 펭귄만 따로 등장 */
+.contents_div .ucp-js .ucp-bf{ opacity:0; }
+.contents_div .ucp-js .ucp-bubble-fig.is-in .ucp-bf{ animation:ucpBfIn .55s cubic-bezier(.3,1.15,.5,1) calc(var(--rv-d, 0s) + var(--bd)) forwards, var(--bl) calc(var(--rv-d, 0s) + var(--bd) + .55s) infinite; }
+.contents_div .ucp-bf--l{ --bd:0s;   --bl:ucpBfWaddle 1.6s ease-in-out; }    /* 옆모습: 뒤뚱뒤뚱 */
+.contents_div .ucp-bf--m{ --bd:.15s; --bl:ucpBfHello 2.4s ease-in-out; }     /* 손 흔드는 아이: 통통 */
+.contents_div .ucp-bf--r{ --bd:.3s;  --bl:ucpBfSway 3.2s ease-in-out; }      /* 뒷모습: 엉덩이 살랑 */
+@keyframes ucpBfIn{ 0%{ opacity:0; transform:translateY(4%) scale(.85); } 100%{ opacity:1; transform:none; } }
+@keyframes ucpBfWaddle{ 0%, 100%{ opacity:1; transform:rotate(0deg); } 25%{ opacity:1; transform:rotate(-1deg); } 75%{ opacity:1; transform:rotate(1deg); } }
+@keyframes ucpBfHello{
+  0%, 55%, 100%{ opacity:1; transform:translateY(0) rotate(0deg); }
+  15%{ opacity:1; transform:translateY(-2%) rotate(1.2deg); } 27%{ opacity:1; transform:translateY(0) rotate(0deg); }
+  39%{ opacity:1; transform:translateY(-1.2%) rotate(-.8deg); }
+}
+@keyframes ucpBfSway{ 0%, 100%{ opacity:1; transform:rotate(0deg) scale(1); } 25%{ opacity:1; transform:rotate(1.5deg) scale(1.01); } 75%{ opacity:1; transform:rotate(-1.5deg) scale(1.01); } }
+
+/* 스티커·포인트 요소 — 크기·각도는 개별 속성(scale·rotate·translate)으로 움직여 기존 transform 위치를 건드리지 않음 */
+.contents_div .ucp-js .ucp-stamp-wrap,
+.contents_div .ucp-js .ucp-love,
+.contents_div .ucp-js .ucp-h2-ico img{ opacity:0; }
+.contents_div .ucp-js .ucp-h2.is-in .ucp-stamp-wrap{          /* 알려드림 배지 + 펭귄 얼굴 한 덩어리로 한 번 뿅 */
+  animation:ucpStampIn .36s ease-in calc(var(--rv-d, 0s) + .65s) forwards, ucpFloat 2.8s ease-in-out calc(var(--rv-d, 0s) + 1.01s) infinite;   /* 타이틀이 다 올라온 뒤 스탬프 쾅 → 둥둥 */
+}
+.contents_div .ucp-js .ucp-pf-row--wt dd.is-in .ucp-love{     /* 작고 소중한 자카스펭귄 스티커 */
+  transform-origin:50% 50%;
+  animation:ucpSlide .9s cubic-bezier(.22,.7,.3,1) calc(var(--rv-d, 0s) + .55s) forwards, ucpLoveFloat 3.2s ease-in-out calc(var(--rv-d, 0s) + 1.45s) infinite;   /* 배로 미끄러져 들어와 멈춤 → 둥둥 */
+}
+.contents_div .ucp-js .ucp-h2.is-in .ucp-h2-ico img{          /* 04 얼굴 아이콘: 뿅 나타나 갸웃갸웃 */
+  animation:ucpPeekIn .6s cubic-bezier(.3,1.6,.45,1) calc(var(--rv-d, 0s) + .4s) forwards, ucpTilt 5s ease-in-out calc(var(--rv-d, 0s) + 1s) infinite;
+}
+.contents_div .ucp-map-pin{ transform-origin:0 0; }          /* 기준점 = 핀 끝 (transform 이동 전 좌표) */
+.contents_div .ucp-js .ucp-info.is-in .ucp-map-pin{           /* 지도 핀: 뿅뿅 – 쉬고 – 뿅뿅 */
+  animation:ucpHop 2.8s ease-in-out calc(var(--rv-d, 0s) + .7s) infinite;
+}
+@keyframes ucpStampIn{ 0%{ opacity:0; scale:1.45; } 75%{ opacity:1; scale:.97; } 100%{ opacity:1; scale:1; } }
+@keyframes ucpFloat{ 0%, 100%{ opacity:1; translate:0 0; } 50%{ opacity:1; translate:0 -9%; } }
+@keyframes ucpPeekIn{ 0%{ opacity:0; scale:.4; translate:0 30%; } 100%{ opacity:1; scale:1; translate:0 0; } }
+@keyframes ucpLoveFloat{ 0%, 100%{ opacity:1; translate:0 0; } 50%{ opacity:1; translate:0 -3%; } }
+@keyframes ucpSlide{ 0%{ opacity:0; translate:45% 0; rotate:4deg; } 30%{ opacity:1; } 100%{ opacity:1; translate:0 0; rotate:0deg; } }
+@keyframes ucpTilt{ 0%, 100%{ opacity:1; rotate:0deg; } 25%{ opacity:1; rotate:-7deg; } 75%{ opacity:1; rotate:7deg; } }
+@keyframes ucpHop{                                          /* 높이·찌그러짐 모두 이전의 절반 */
+  0%{ translate:0 0; scale:1; }
+  8%{ translate:0 -17%; scale:.975 1.03; }
+  16%{ translate:0 0; scale:1.05 .94; }
+  21%{ translate:0 0; scale:1; }
+  29%{ translate:0 -17%; scale:.975 1.03; }
+  37%{ translate:0 0; scale:1.05 .94; }
+  42%, 100%{ translate:0 0; scale:1; }
+}
+
 /* ===== 반응형 ===== */
 @media (hover:hover) and (pointer:fine){
   .contents_div .ucp-nav-btn:hover::after{ width:44%; }   /* 호버 시 언더라인 */
@@ -501,6 +600,8 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
   .contents_div .ucp-foot-title{ padding-bottom:12px; font-size:calc(var(--fs-foot) - 1.5px); font-weight:600; line-height:1.42; }   /* 모바일 -1.5, 굵기 600 */
   .contents_div .ucp-tags{ gap:4px 12px; }
   .contents_div .ucp-tags li{ height:auto; padding:0; border:0; border-radius:0; font-weight:400; opacity:.7; }   /* 모바일 태그 글자 연하게 */
+  .contents_div .ucp-js .ucp-rv:not(.is-in){ transform:translateY(20px); }   /* 스크롤 등장 이동 거리 축소 */
+  .contents_div .ucp-js .ucp-rv--fade:not(.is-in){ transform:none; }
 }
 @media (max-width:480px){
   .contents_div .ucp-wrap{
@@ -524,13 +625,26 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
 
 <article class="ucp-wrap">
 
+<!-- TEST: 확인 후 이 줄 삭제 -->
+ <div class="jngj-test-spacer" aria-hidden="true" style="height:900px;max-width:800px;margin:auto;display:grid;place-items:center;border:1px solid #cb9;background:linear-gradient(to top right,#0000 calc(50% - 1px),#cb9,#0000 calc(50% + 1px)),linear-gradient(to top left,#0000 calc(50% - 1px),#cb9,#0000 calc(50% + 1px)) #fffdef;font:700 16px sans-serif;color:#7E5E50"><b style="padding:10px 20px;background:#fffdef;border:1px solid #cb9;border-radius:99px">
+  테스트 영역 · 아래로 스크롤 ↓</b></div>
+<!-- TEST: 확인 후 이 줄 삭제  -->
   <section class="ucp-hero">
     <div class="ucp-hero-top"></div>
     <div class="ucp-hero-photo">
       <img src="img/히어로이미지.webp" alt="서울어린이대공원에서 광주 우치동물원으로 이사 온 자카스펭귄들" width="800" height="577" fetchpriority="high" loading="eager" decoding="async">
       <span class="ucp-hero-fade" aria-hidden="true"></span>
     </div>
-    <img class="ucp-hero-txt" src="img/히어로텍스트.webp" alt="" aria-hidden="true" width="800" height="625" fetchpriority="high" loading="eager" decoding="async">
+    <div class="ucp-hero-txt" aria-hidden="true">
+      <img class="ucp-ht ucp-ht--eb" style="--ci:inset(6.64% 10.75% 88.16% 10.75%);--o:50% 9.24%" src="img/히어로텍스트.webp" alt="" width="800" height="625" fetchpriority="high" loading="eager" decoding="async">
+      <img class="ucp-ht ucp-ht--l1" style="--ci:inset(23.2% 29.875% 58.4% 30.875%);--o:50.5% 32.4%" src="img/히어로텍스트.webp" alt="" width="800" height="625" loading="eager" decoding="async">
+      <img class="ucp-ht ucp-ht--l2" style="--ci:inset(40.48% 16.062% 41.76% 17.438%);--o:50.688% 49.36%" src="img/히어로텍스트.webp" alt="" width="800" height="625" loading="eager" decoding="async">
+      <img class="ucp-ht ucp-ht--l3" style="--ci:inset(57.36% 26.438% 25.2% 24.125%);--o:48.844% 66.08%" src="img/히어로텍스트.webp" alt="" width="800" height="625" loading="eager" decoding="async">
+      <img class="ucp-ht ucp-ht--dot" style="--ci:inset(21.6% 78.625% 70.96% 15.313%);--o:18.344% 25.32%" src="img/히어로텍스트.webp" alt="" width="800" height="625" loading="eager" decoding="async">
+      <img class="ucp-ht ucp-ht--star" style="--ci:inset(32.48% 85.875% 56.8% 5.188%);--o:9.656% 37.84%" src="img/히어로텍스트.webp" alt="" width="800" height="625" loading="eager" decoding="async">
+      <img class="ucp-ht ucp-ht--fish" style="--ci:inset(25.2% 7.25% 63.68% 81.25%);--o:87% 30.76%" src="img/히어로텍스트.webp" alt="" width="800" height="625" loading="eager" decoding="async">
+      <img class="ucp-ht ucp-ht--peng" style="--ci:inset(70% 3.812% 0.16% 74.062%);--o:85.125% 99.2%" src="img/히어로텍스트.webp" alt="" width="800" height="625" loading="eager" decoding="async">
+    </div>
   </section>
 
   <nav class="ucp-nav" aria-label="본문 바로가기">
@@ -548,7 +662,9 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
       <p>“저희는 아프리카에서 온 자카스펭귄 11마리예요!<span class="ucp-br ucp-br--web"></span> 이번에 우치동물원으로 이사를 왔어요.<span class="ucp-br ucp-br--web"></span> 짐 정리는 끝났으니, 저희 보러 오실래요?”</p>
     </blockquote>
     <div class="ucp-bubble-fig">
-      <img src="img/말풍선이미지.webp" alt="" loading="lazy" decoding="async">
+      <img class="ucp-bf ucp-bf--l" style="--ci:inset(4.808% 68.929% 3.846% 0.714%);--o:15.893% 94.712%" src="img/말풍선이미지.webp" alt="" loading="lazy" decoding="async">
+      <img class="ucp-bf ucp-bf--m" style="--ci:inset(3.606% 33.75% 1.683% 33.571%);--o:49.911% 96.875%" src="img/말풍선이미지.webp" alt="" loading="lazy" decoding="async">
+      <img class="ucp-bf ucp-bf--r" style="--ci:inset(4.087% 0.179% 1.683% 67.054%);--o:83.438% 96.875%" src="img/말풍선이미지.webp" alt="" loading="lazy" decoding="async">
     </div>
     <p class="ucp-catch"><span class="ucp-catch-hl">키 70cm, 몸무게 3kg, 귀여움은 무한대!</span></p>
     <p class="ucp-lead">우치동물원에 새 가족이 생겼어요. 아프리카에서 온 자카스펭귄 11마리가<span class="ucp-br ucp-br--web"></span> 서울어린이대공원에서 우치동물원으로 이사를 왔습니다.<span class="ucp-br ucp-br--web"></span> 귀여운 새 이웃들을 따뜻하게 맞이해 볼까요?</p>
@@ -562,7 +678,7 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
       </div>
       <div class="ucp-profile">
         <figure class="ucp-fig ucp-pf-fig">
-          <img src="img/펭귄프로필.webp" alt="우치동물원 새 보금자리에 모여 있는 자카스펭귄들" loading="lazy" decoding="async">
+          <img src="img/펭귄프로필.webp" alt="우치동물원 새 보금자리에 모여 있는 자카스펭귄들" loading="eager" decoding="async">
         </figure>
         <div class="ucp-pf-box">
         <dl class="ucp-pf">
@@ -725,6 +841,74 @@ if(location.protocol==='file:'||location.hostname.indexOf('github.io')>-1){
       });
     }, { rootMargin:'-45% 0px -50% 0px' });
     for(var k=0;k<secs.length;k++) io.observe(secs[k]);
+  }
+
+  /* ===== 모션 ===== */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !window.IntersectionObserver) return;
+  wrap.classList.add('ucp-js');
+
+  /* 1) 히어로 텍스트: 이미지 로드 후 등장 */
+  var txt = wrap.querySelector('.ucp-hero-txt');
+  /* 이미지 로드 + 히어로가 화면에 들어왔을 때 시작 (페이지 위에 다른 내용이 있어도 보는 순간 재생) */
+  var loaded = false, heroSeen = false;
+  function txtIn(){ if(txt && loaded && heroSeen) txt.classList.add('is-in'); }
+  var txtImg = txt ? txt.querySelector('img') : null;
+  function onLoad(){ loaded = true; txtIn(); }
+  if(txtImg){
+    if(txtImg.complete && txtImg.naturalWidth) onLoad();
+    else{ txtImg.addEventListener('load', onLoad); txtImg.addEventListener('error', onLoad); }
+    var hio = new IntersectionObserver(function(entries){
+      if(entries[0].intersectionRatio >= .3){ heroSeen = true; hio.disconnect(); txtIn(); }
+    }, { threshold:[0, .3] });
+    hio.observe(wrap.querySelector('.ucp-hero'));
+  }
+
+  /* 2) 히어로 사진: 히어로텍스트 펭귄이 뿅 뜨면 바로 흐릿함 → 선명하게 */
+  var photo = wrap.querySelector('.ucp-hero-photo');
+  var peng = wrap.querySelector('.ucp-ht--peng');
+  if(photo){
+    var photoIn = function(){ photo.classList.add('is-in'); };
+    if(peng){
+      peng.addEventListener('animationstart', function(e){
+        if(e.animationName === 'ucpJump') setTimeout(photoIn, 350);   /* 펭귄이 솟아오르는 순간 */
+      });
+      setTimeout(photoIn, 4000);                                     /* 텍스트 이미지 로드 실패 대비 */
+    }else photoIn();
+  }
+
+  /* 3) 내비 아래 콘텐츠: 화면에 들어온 순서대로 한 박자씩 (한꺼번에 X) */
+  var sel = '.ucp-intro .ucp-h1, .ucp-bubble, .ucp-bubble-fig, .ucp-catch, .ucp-lead,'
+          + '.ucp-kicker, .ucp-h2, .ucp-profile .ucp-pf dt, .ucp-profile .ucp-pf dd,'
+          + '#ucp-sec2 > .ucp-txt, .ucp-stats li, .ucp-why, .ucp-promise li,'
+          + '.ucp-info, .ucp-etq-title, .ucp-etq li, .ucp-cta-wrap, .ucp-foot-title, .ucp-tags li';
+  var els = wrap.querySelectorAll(sel);
+  /* 같은 순간 화면에 함께 들어온 것끼리만 차례로 (빨리 스크롤해도 지연이 쌓이지 않게, 최대 0.6초) */
+  function reveal(el, i){
+    var d;
+    if(el.tagName === 'DD' && el.previousElementSibling && el.previousElementSibling.ucpD != null){
+      d = el.previousElementSibling.ucpD;                     /* dd는 같은 행 dt와 함께 */
+    }else{
+      var step = el.parentNode.classList.contains('ucp-tags') ? .05 : .14;
+      d = Math.min(i * step, .6);
+    }
+    el.ucpD = d;
+    el.style.setProperty('--rv-d', d.toFixed(2) + 's');
+    el.classList.add('is-in');
+  }
+  var rio = new IntersectionObserver(function(entries){
+    var i = 0;
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      rio.unobserve(en.target);
+      reveal(en.target, en.target.tagName === 'DD' ? i : i++);
+    });
+  }, { rootMargin:'0px', threshold:0 });   /* 화면에 조금이라도 들어오면 등장 (맨 아래 푸터도 반드시 보이게) */
+  for(var m=0;m<els.length;m++){
+    var el = els[m];
+    el.classList.add('ucp-rv');
+    if(el.tagName === 'DT' || el.tagName === 'DD') el.classList.add('ucp-rv--fade');
+    rio.observe(el);
   }
 })();
 </script>
